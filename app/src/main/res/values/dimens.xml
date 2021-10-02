@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources><dimen name="font_large">40dp</dimen>
+
+    <dimen name="disclaimer_checkbox_font_size">22dp</dimen>
+    <dimen name="disclaimer_checkbox_marginStart">100dp</dimen>
+    <dimen name="disclaimer_checkbox_marginEnd">100dp</dimen>
+    <dimen name="disclaimer_checkbox_marginTop">50dp</dimen>
+    <dimen name="disclaimer_checkbox_marginBottom">100dp</dimen>
+    <!--Slide 1-->
+    <dimen name="intro_top_textview_font_size">40dp</dimen>
+    <dimen name="intro_top_textview_marginStart">10dp</dimen>
+    <dimen name="intro_top_textview_marginEnd">10dp</dimen>
+    <dimen name="intro_top_textview_marginTop">40dp</dimen>
+    <dimen name="intro_top_textview_marginBottom">10dp</dimen>
+
+    <dimen name="intro_ImageView_marginStart">20dp</dimen>
+    <dimen name="intro_ImageView_marginEnd">20dp</dimen>
+    <dimen name="intro_ImageView_marginTop">40dp</dimen>
+    <dimen name="intro_ImageView_marginBottom">40dp</dimen>
+    <dimen name="intro_ImageView_width">200dp</dimen>
+    <dimen name="intro_ImageView_height">260dp</dimen>
+
+    <dimen name="intro_ImageView2_marginStart">20dp</dimen>
+    <dimen name="intro_ImageView2_marginEnd">20dp</dimen>
+    <dimen name="intro_ImageView2_marginTop">60dp</dimen>
+    <dimen name="intro_ImageView2_marginBottom">40dp</dimen>
+    <dimen name="intro_ImageView2_width">220dp</dimen>
+    <dimen name="intro_ImageView2_height">280dp</dimen>
+
+    <dimen name="intro_CardView_marginStart">30dp</dimen>
+    <dimen name="intro_CardView_marginEnd">30dp</dimen>
+    <dimen name="intro_CardView_marginTop">20dp</dimen>
+    <dimen name="intro_CardView_marginBottom">10dp</dimen>
+
+    <dimen name="intro_CardView_textview_font_size">20dp</dimen>
+    <dimen name="intro_CardView_textview_marginStart">10dp</dimen>
+    <dimen name="intro_CardView_textview_marginEnd">10dp</dimen>
+    <dimen name="intro_CardView_textview_marginTop">10dp</dimen>
+    <dimen name="intro_CardView_textview_marginBottom">10dp</dimen>
+
+    <dimen name="intro_two_textviews_font_size">16dp</dimen>
+    <dimen name="intro_two_textviews_marginStart">20dp</dimen>
+    <dimen name="intro_two_textviews_marginEnd">20dp</dimen>
+    <dimen name="intro_two_textviews_marginTop">40dp</dimen>
+    <dimen name="intro_two_textviews_marginBottom">10dp</dimen>
+
+    <dimen name="intro_buttons_font_size">15dp</dimen>
+    <dimen name="intro_buttons_marginStart">30dp</dimen>
+    <dimen name="intro_buttons_marginEnd">30dp</dimen>
+    <dimen name="intro_buttons_marginTop">10dp</dimen>
+    <dimen name="intro_buttons_marginBottom">10dp</dimen>
+
+    <dimen name="intro_bottom_button_font_size">15dp</dimen>
+    <dimen name="intro_bottom_button_marginStart">30dp</dimen>
+    <dimen name="intro_bottom_button_marginEnd">30dp</dimen>
+    <dimen name="intro_bottom_button_marginTop">10dp</dimen>
+    <dimen name="intro_bottom_button_marginBottom">10dp</dimen>
+    <!--Slide 2-->
+    <dimen name="disclaimer_font_size">55dp</dimen>
+    <dimen name="disclaimer_marginStart">20dp</dimen>
+    <dimen name="disclaimer_marginEnd">20dp</dimen>
+    <dimen name="disclaimer_marginTop">80dp</dimen>
+    <dimen name="disclaimer_marginBottom">20dp</dimen>
+
+    <dimen name="disclaimer_text_font_size">25dp</dimen>
+    <dimen name="disclaimer_text_marginStart">20dp</dimen>
+    <dimen name="disclaimer_text_marginEnd">20dp</dimen>
+    <dimen name="disclaimer_text_marginTop">20dp</dimen>
+    <dimen name="disclaimer_text_marginBottom">20dp</dimen>
+    <!--cigarette question activity-->
+
+    <!--main activity-->
+    <dimen name="main_top_button_marginStart">10dp</dimen>
+    <dimen name="main_top_button_marginEnd">10dp</dimen>
+    <dimen name="main_top_button_marginTop">10dp</dimen>
+    <dimen name="main_top_button_marginBottom">10dp</dimen>
+
+    <dimen name="main_CardView_marginStart">30dp</dimen>
+    <dimen name="main_CardView_marginEnd">30dp</dimen>
+    <dimen name="main_CardView_marginTop">20dp</dimen>
+    <dimen name="main_CardView_marginBottom">50dp</dimen>
+    <dimen name="main_CardView_elevation">10dp</dimen>
+
+    <dimen name="main_CardView_textview_font_size">40dp</dimen>
+    <dimen name="main_CardView_textview_marginStart">10dp</dimen>
+    <dimen name="main_CardView_textview_marginEnd">10dp</dimen>
+    <dimen name="main_CardView_textview_marginTop">10dp</dimen>
+    <dimen name="main_CardView_textview_marginBottom">10dp</dimen>
+
+    <dimen name="main_cigarette_marginStart">30dp</dimen>
+    <dimen name="main_cigarette_marginEnd">30dp</dimen>
+    <dimen name="main_cigarette_marginTop">80dp</dimen>
+    <dimen name="main_cigarette_marginBottom">80dp</dimen>
+    <dimen name="main_cigarette_width">380dp</dimen>
+    <dimen name="main_cigarette_height">105dp</dimen>
+
+    <dimen name="subtraction_marginStart">30dp</dimen>
+    <dimen name="subtraction_marginEnd">10dp</dimen>
+    <dimen name="subtraction_marginTop">100dp</dimen>
+    <dimen name="subtraction_marginBottom">30dp</dimen>
+    <dimen name="main_constraintlayout_marginTop">120dp</dimen>
+    <dimen name="main_constraintlayout_marginBottom">10dp</dimen>
+    <!--settings activity-->
+
+</resources>
+
+    <!--<dimen name=""></dimen>-->
+    <!--
+        font_size
+        marginStart
+        marginEnd
+        marginTop
+        marginBottom
+    -->

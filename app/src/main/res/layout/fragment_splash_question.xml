@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:background="@color/BlackCoral"
+    tools:context=".CigaretteQuestion">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_Question"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+    </androidx.appcompat.widget.Toolbar>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:elevation="10dp">
+
+        <TextView
+            android:id="@+id/HowMuchText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:text="How much cigarettes you smoke per day in average?"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textColorHighlight="#FFFFFF"
+            android:textColorHint="#000000"
+            android:textColorLink="#000000"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.cardview.widget.CardView>
+
+
+    <EditText
+        android:id="@+id/HowMuchEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginEnd="150dp"
+        android:textSize="20dp"
+        android:backgroundTint="@color/black"
+        android:ems="10"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textColorHighlight="#009688"
+        android:textColorLink="@color/red"
+        android:textCursorDrawable="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/GenderText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/HowMuchText"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:elevation="10dp">
+
+        <TextView
+            android:id="@+id/GenderText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:text="Are you a male or female?"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textColorHighlight="#FFFFFF"
+            android:textColorHint="#000000"
+            android:textColorLink="#000000"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+    </androidx.cardview.widget.CardView>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:id="@+id/RadioGender"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginBottom="23dp"
+            android:orientation="horizontal">
+
+        </RadioGroup>
+
+        <RadioButton
+            android:id="@+id/FemaleRadio"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_marginRight="100dp"
+            android:layout_marginTop="20dp"
+            android:buttonTint="@color/red"
+            android:text="Female"
+            android:textStyle="bold"
+            android:textSize="20dp"/>
+
+        <RadioButton
+            android:id="@+id/MaleRadio"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="100dp"
+            android:buttonTint="@color/red"
+            android:checked="true"
+            android:text="Male"
+            android:textStyle="bold"
+            android:textSize="20dp"/>
+    </GridLayout>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:elevation="10dp">
+
+        <TextView
+            android:id="@+id/HowOldText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="How old are you?"
+            android:textColor="@color/black"
+            android:textColorHighlight="#FFFFFF"
+            android:textColorHint="#000000"
+            android:textColorLink="#000000"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+    </androidx.cardview.widget.CardView>
+
+
+    <EditText
+        android:id="@+id/HowOldEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginEnd="150dp"
+        android:textSize="20dp"
+        android:backgroundTint="@color/black"
+        android:ems="10"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textColorHighlight="#009688"
+        android:textColorLink="@color/red"
+        android:textCursorDrawable="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/HowOldText"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/shape_rounded_continue_button"
+        android:foreground="?attr/selectableItemBackground"
+        android:text="Submit"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="17dp"/>
+
+
+</LinearLayout>

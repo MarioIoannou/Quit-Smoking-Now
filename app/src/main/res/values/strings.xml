@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">QuitSmokingNow</string>
+    <string name="app_name_2">Quit Smoking <font color="#FF0000">Now</font></string>
+    <string name="welcome">Welcome</string>
+    <string name="button_click_sound">Play button click</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+    <string name="start">Start</string>
+    <string name="Paper_1">
+      <a href="https://uwaterloo.ca/tobacco-use-canada/adult-tobacco-use/smoking-canada/cigarette-consumption">Paper 1</a>
+    </string>
+    <string name="Paper_2">
+      <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5915125/table/T2/?report=objectonly">Paper 2</a>
+    </string>
+    <string name="Paper_3">
+      <a href="https://tobaccocontrol.bmj.com/content/14/5/315">Paper 3</a>
+    </string>
+    <string name="Paper_4">
+      <a href="https://www.sciencedirect.com/science/article/pii/S0273230013001402">Paper 4</a>
+    </string>
+    <string name="Paper_5">
+      <a href="https://www.tobaccoinaustralia.org.au/chapter-18-harm-reduction/18-3-reduction">Paper 5</a>
+    </string>
+    <string name="Paper_6">
+      <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6192932/table/t2-crt-2017-326/?report=objectonly">Paper 6</a>
+    </string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="help_message">This app will help you lower your cigarette consumption, even quit smoking, with the help of scientific papers from universities or online researches.\n
+    \nFor you to have better results and the results that the app is giving, you must lower you consumption 50% and maintain it as long as you can.</string>
+
+    <string name="Intro_String"><b>Welcome to Quit Smoking Now app.
+        This app will help you lower your cigarette consumption, even quit smoking, with the help of specific scientific papers. </b></string>
+    <string name="string_university_of_peloponnese">Welcome\nThis is an bachelor\'s thesis app,\n created for University of Peloponnese</string>
+    <string name="this_app_will_help_you_lower">This app will help you lower your cigarette consumption, even quit smoking, with the help of scientific papers from universities, researches and researchers papers.\n \nFor you to have better results and the results that the app is giving, you must lower you consumption 50% and maintain it as long as you can.</string>
+    <string name="about">About</string>
+    <string name="here_goes_how_much">Here goes how much</string>
+    <string name="the_links_for_the_papers_are_below_for_you_to_see">The links for the papers, are below for you to see:</string>
+    <string name="did_you_smoke_any_cigarettes_today">Did you smoke any cigarettes today?</string>
+    <string name="did_you_accidentally_click_more_subtract_one">Did you accidentally click more? Subtract one.</string>
+    <string name="subtraction">Subtraction</string>
+</resources>
