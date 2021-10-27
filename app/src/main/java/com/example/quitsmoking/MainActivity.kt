@@ -42,6 +42,8 @@ class MainActivity : AppCompatActivity() {
             supportActionBar?.hide()
         }
         setUpTabs()
+        /*val intent = Intent(this,MyService::class.java)
+        startService(intent)*/
 
         /*var extra1 = intent.getIntExtra("first",1)
         onStart(extra1)
@@ -100,64 +102,6 @@ class MainActivity : AppCompatActivity() {
         tabLayout.getTabAt(0)!!.setIcon(R.drawable.ic_baseline_home_24)
         tabLayout.getTabAt(1)!!.setIcon(R.drawable.ic_baseline_table_rows_24)
     }
-    /*private fun addCigarette() {
-        CigaretteButton.setOnClickListener {
-            DidYouSmokeText.text = timesSmoked.toString()
-            DidYouSmokeText.setTextSize(100F)
-            DidYouSmokeText.setTextColor(Color.RED)
-            val scaledown2: Animation = AnimationUtils.loadAnimation(this, R.anim.scale_down)
-            val scaleup2 = AnimationUtils.loadAnimation(this, R.anim.scale_up)
-            when {
-                timesSmoked == 0 -> {
-                    timesSmoked++
-                }
-                timesSmoked == 1 -> {
-                    CigaretteButton.startAnimation(scaledown2)
-                    CigaretteButton.startAnimation(scaleup2)
-                    Toast.makeText(
-                        this@MainActivity,
-                        "You smoked $timesSmoked cigarette.",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    timesSmoked++
-                    val mp2 = MediaPlayer.create(this, R.raw.human_smoking)
-                    mp2?.start()
-                }
-                timesSmoked >= 2 -> {
-                    CigaretteButton.startAnimation(scaledown2)
-                    CigaretteButton.startAnimation(scaleup2)
-                    Toast.makeText(
-                        this@MainActivity,
-                        "You smoked $timesSmoked cigarettes.",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    timesSmoked++
-                    val mp3 = MediaPlayer.create(this, R.raw.human_smoking)
-                    mp3?.start()
-                }
-                else -> {
-                    Toast.makeText(this@MainActivity, "ERROR 404", Toast.LENGTH_SHORT).show()
-                    timesSmoked++
-                }
-            }
-        }
-    }
-
-    private fun SubCigarette() {
-        subtractCig.setOnClickListener {
-            if (timesSmoked > 0) {
-                timesSmoked--
-                DidYouSmokeText.text = timesSmoked.toString()
-                DidYouSmokeText.setTextSize(100F)
-            } else {
-                Toast.makeText(
-                    this@MainActivity,
-                    "You can't subtract when you didn't smoke any cigarette.",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        }
-    }*/
 
     override fun onBackPressed() {
         if (backPressedTime) {

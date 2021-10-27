@@ -75,11 +75,11 @@ class IntroActivity : AppCompatActivity() {
             } else {
                 launchHomeScreen()
             }
-        })
+        }
     }
 
     private fun addBottomDots(currentPage: Int) {
-        var dots: Array<TextView?> = arrayOfNulls(layouts!!.size)
+        val dots: Array<TextView?> = arrayOfNulls(layouts!!.size)
 
         dotsLayout!!.removeAllViews()
         for (i in dots.indices) {

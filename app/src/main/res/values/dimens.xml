@@ -80,6 +80,7 @@
     <dimen name="main_CardView_marginTop">20dp</dimen>
     <dimen name="main_CardView_marginBottom">50dp</dimen>
     <dimen name="main_CardView_elevation">10dp</dimen>
+    <dimen name="result_CardView_marginBottom">10dp</dimen>
 
     <dimen name="main_CardView_textview_font_size">40dp</dimen>
     <dimen name="main_CardView_textview_marginStart">10dp</dimen>

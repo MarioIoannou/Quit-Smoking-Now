@@ -8,6 +8,10 @@
         android:roundIcon="@mipmap/launcher_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuitSmokingNow">
+        <service
+            android:name=".MyService"
+            android:enabled="true"
+            android:exported="true" />
         <activity
             android:name=".IntroActivity"
             android:exported="true"
@@ -26,7 +30,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         -->
         <activity
-            android:name=".SettingsActivity"
+            android:name=".ResultActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -35,6 +39,8 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <receiver android:name=".AlertReceiver"/>
     </application>
 
 </manifest>

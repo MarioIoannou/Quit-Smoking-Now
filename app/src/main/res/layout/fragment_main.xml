@@ -67,7 +67,6 @@
         android:layout_marginEnd="@dimen/main_cigarette_marginEnd"
         android:layout_marginBottom="@dimen/main_cigarette_marginBottom"
         android:background="@drawable/cigarette"
-        android:clickable="true"
         android:focusable="true"
         android:scaleType="fitCenter"
         tools:ignore="SpeakableTextPresentCheck" />

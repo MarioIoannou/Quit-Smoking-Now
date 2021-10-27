@@ -39,4 +39,5 @@
     <string name="did_you_smoke_any_cigarettes_today">Did you smoke any cigarettes today?</string>
     <string name="did_you_accidentally_click_more_subtract_one">Did you accidentally click more? Subtract one.</string>
     <string name="subtraction">Subtraction</string>
+    <string name="notification_channel_description">This is a channel description</string>
 </resources>

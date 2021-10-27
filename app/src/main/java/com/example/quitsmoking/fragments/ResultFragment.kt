@@ -29,7 +29,7 @@ class ResultFragment : Fragment() {
             ResultText?.text = "This is your first time in the app, you should better start fresh tomorrow."
             ResultText?.setTextSize(50F)
             ResultText?.setTextColor(Color.BLACK)
-            days += 1
+            days ++
         } else {
             Toast.makeText(
                 activity?.baseContext,

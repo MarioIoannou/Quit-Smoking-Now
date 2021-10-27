@@ -1,5 +1,6 @@
 package com.example.quitsmoking.fragments
 
+import android.app.*
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -7,6 +8,7 @@ import android.graphics.Color
 import android.media.MediaPlayer
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,74 +18,83 @@ import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
-import com.example.quitsmoking.R
 import kotlinx.android.synthetic.main.fragment_main.*
 import android.widget.TextView
 import androidx.annotation.RequiresApi
-import com.example.quitsmoking.MainActivity
-import com.example.quitsmoking.ResultActivity
-import org.joda.time.LocalDate
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.io.OutputStreamWriter
-import java.lang.Exception
-import java.lang.StringBuilder
-import java.time.LocalTime
-import java.time.format.DateTimeFormatter
-import java.time.format.FormatStyle
+import androidx.lifecycle.ViewModelProvider
+import com.example.quitsmoking.*
+import com.example.quitsmoking.data.Cigarette
+import com.example.quitsmoking.data.CigaretteDao
+import com.example.quitsmoking.data.CigaretteDatabase
+import com.example.quitsmoking.data.CigaretteViewModel
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import java.util.*
 
 class MainFragment : Fragment(), View.OnClickListener {
 
     @RequiresApi(Build.VERSION_CODES.O)
-    val time: LocalTime = LocalTime.now()
-    val deadline = "21:00:00.000"
+    //val timeNow: org.joda.time.LocalTime = org.joda.time.LocalTime.now()
+    //val time : String = "01:51:00"
+    //private val deadline: org.joda.time.LocalTime = org.joda.time.LocalTime("01:51:00")
+    private lateinit var  mCigaretteViewModel: CigaretteViewModel
+    private lateinit var pendingIntent : PendingIntent
+    private var alarmManager: AlarmManager? = null
     private var timesSmoked: Int = 1
+    private var mNotified = false
     var line: String? = null
     lateinit var sharedPreferences: SharedPreferences
     val myPreferences = "mypref"
     val timekey = "timessmoked"
+    var days = 1
+    private val CHANNEL_ID = "Channel ID"
+    private val notificationId = 1
+    private lateinit var dao: CigaretteDao
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //supportActionBar?.setDisplayHomeAsUpEnabled(true)
-       /*val scaledown1: Animation = AnimationUtils.loadAnimation(activity?.baseContext, R.anim.scale_down)
-        val scaleup1 = AnimationUtils.loadAnimation(activity?.baseContext, R.anim.scale_up)
-        settings_btn.setOnClickListener{
-            val mp1 = MediaPlayer.create(this, R.raw.button_click)
-            mp1?.start()
-            val intent = Intent(this, SettingsActivity::class.java)
-            intent.putExtra("varone",intent.getStringExtra("varOne"))
-            intent.putExtra("vartwo",intent.getStringExtra("varTwo"))
-            settings_btn.startAnimation(scaledown1)
-            settings_btn.startAnimation(scaleup1)
-            startActivity(intent)
-            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
-        }*/
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var days = 1
         val view: View = inflater!!.inflate(R.layout.fragment_main, container, false)
         val cig_btn: ImageButton = view.findViewById(R.id.CigaretteButton)
         val sub_btn: Button = view.findViewById(R.id.subtractCig)
         val txt : TextView = view.findViewById(R.id.DidYouSmokeText)
+        //mCigaretteViewModel = ViewModelProvider(this).get(CigaretteViewModel::class.java)
+        alarmManager = context?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        pendingIntent = Intent(context, AlertReceiver::class.java).let { intent ->
+            PendingIntent.getBroadcast(context, 0, intent, 0)
+        }
+        val calendar: Calendar = Calendar.getInstance().apply {
+            timeInMillis = System.currentTimeMillis()
+            set(Calendar.HOUR_OF_DAY, 2)
+            set(Calendar.MINUTE, 17)
+        }
+        var dbInstance = CigaretteDatabase.getDatabase(this)
+        val tsigaro = Cigarette(timesSmoked,Date()) as Cigarette
+        val currentTime = Calendar.getInstance()
+        val timeToMatch = Calendar.getInstance()
+        timeToMatch[Calendar.HOUR_OF_DAY] = 24
         timesSmoked = loadData()
+        days = loadData()
         //if(time != deadline){
-        if(1==1){
+        if(currentTime != timeToMatch){
             if(days == 1){
                 //transaction(days)
 
-                /*val intent1 = Intent(activity, MainActivity::class.java)
+                val intent1 = Intent(activity, ResultActivity::class.java)
                 intent1.putExtra("first",1)
                 startActivity(intent1)
-                println("1st print: $days")*/
+                println("1st print: $days")
 
                 /*val transaction = activity?.supportFragmentManager?.beginTransaction()
                 transaction?.replace(R.id.MainFrag, ResultFragment())
                 transaction?.disallowAddToBackStack()
                 transaction?.commit()*/
-                days += 1
+                days ++
             }
             cig_btn.setOnClickListener {
                 txt.text = timesSmoked.toString()
@@ -92,47 +103,50 @@ class MainFragment : Fragment(), View.OnClickListener {
                 val scaledown2: Animation = AnimationUtils.loadAnimation(activity?.baseContext, R.anim.scale_down)
                 val scaleup2 = AnimationUtils.loadAnimation(activity?.baseContext, R.anim.scale_up)
                 when {
-                    timesSmoked == 0 -> {
-                        timesSmoked++
-                    }
                     timesSmoked == 1 -> {
+                        addCigaretteData()
                         CigaretteButton?.startAnimation(scaledown2)
                         CigaretteButton?.startAnimation(scaleup2)
-                        timesSmoked++
                         val mp2 = MediaPlayer.create(activity?.baseContext, R.raw.human_smoking)
                         mp2?.start()
+                        timesSmoked++
                     }
                     timesSmoked >= 2 -> {
+                        addCigaretteData()
                         CigaretteButton?.startAnimation(scaledown2)
                         CigaretteButton?.startAnimation(scaleup2)
-                        timesSmoked++
                         val mp3 = MediaPlayer.create(activity?.baseContext, R.raw.human_smoking)
                         mp3?.start()
+                        timesSmoked++
                     }
                     else -> {
                         Toast.makeText(activity?.baseContext, "ERROR 404", Toast.LENGTH_SHORT).show()
-                        timesSmoked++
+                        timesSmoked ++
                     }
                 }
-                println(timesSmoked)
                 saveData("Tsigaro",timesSmoked)
+                println(timesSmoked)
             }
 
-        }else {
+        }else{
+            if (!mNotified) {
+                //NotificationUtils().setNotification(timeToMatch, this@MainFragment)
+                alarmManager!!.set(AlarmManager.RTC_WAKEUP,calendar.timeInMillis,pendingIntent)
+            }
             if(days > 1){
                 val intent2 = Intent(requireContext(), ResultActivity::class.java)
                 intent2.putExtra("smokes",timesSmoked)
-                startActivity(intent2)
+                //startActivity(intent2)
                 days++
-                println("2nd print: $days")
                 Toast.makeText(activity?.baseContext, "Else...", Toast.LENGTH_SHORT).show()
             }
             timesSmoked = 1
+            saveData("Tsigaro",timesSmoked)
         }
-        println("3rd print: $days")
-
+        saveData("Days",days)
         sub_btn.setOnClickListener {
-            //readData()
+            deleteCigaretteData()
+            saveData("Tsigaro",timesSmoked)
             if (timesSmoked > 0) {
                 timesSmoked--
                 txt.text = timesSmoked.toString()
@@ -143,21 +157,10 @@ class MainFragment : Fragment(), View.OnClickListener {
                     "You can't subtract when you didn't smoke any cigarette.",
                     Toast.LENGTH_SHORT
                 ).show()
+                timesSmoked = 0
             }
-            saveData("Tsigaro",timesSmoked)
         }
         return view
-    }
-
-    fun transaction(a : Int){
-        if (a == 1){
-            val intent1 = Intent(activity, MainActivity::class.java)
-            intent1.putExtra("first",1)
-            startActivity(intent1)
-            println("1st print: $a")
-        }else {
-            return
-        }
     }
 
     /*override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -165,6 +168,8 @@ class MainFragment : Fragment(), View.OnClickListener {
         for (fragment in MainActivity.fragments)
         { fragment.onActivityResult(requestCode, resultCode, data) }
     }*/
+
+//--------------- SharedPreferences -------------//
 
     private fun saveData(key: String,value: Int){
         val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences ("sharedPrefs",Context.MODE_PRIVATE)
@@ -180,50 +185,86 @@ class MainFragment : Fragment(), View.OnClickListener {
         return savedString
     }
 
-//2os Tropos
-
-   /* fun saveData(){
-        try{
-            val fileOutputStream = context?.openFileOutput("file.txt",Context.MODE_PRIVATE)
-            val outputStreamWriter = OutputStreamWriter(fileOutputStream)
-            outputStreamWriter.write(DidYouSmokeText.text.toString())
-            outputStreamWriter.close()
-        }
-        catch (exp: Exception){
-            exp.printStackTrace()
+    fun addCigaretteData(){
+        var dbInstance = CigaretteDatabase.getDatabase(this)
+        val tsigaro = Cigarette(timesSmoked,Date()) as Cigarette
+        GlobalScope.launch {
+            dbInstance.cigaretteDao().addCigarette(tsigaro)
+            var tsigara = dbInstance.cigaretteDao().getAll()
+            Log.e("Student", "$tsigara")
         }
     }
 
-    fun clearData(view: View){
-        DidYouSmokeText.text = ""
+    fun deleteCigaretteData(){
+        var dbInstance = CigaretteDatabase.getDatabase(this)
+        val tsigaro = Cigarette(timesSmoked,Date()) as Cigarette
+        GlobalScope.launch {
+            dbInstance.cigaretteDao().deleteCigarette(tsigaro)
+            var tsigara = dbInstance.cigaretteDao().getAll()
+            Log.e("Student", "$tsigara")
+        }
     }
 
-    fun readData(): String {
-        try{
-            val fileInputStream = context?.openFileInput("file.txt")
-            val inputStreamReader = InputStreamReader(fileInputStream)
-            val bufferReader = BufferedReader(inputStreamReader)
-            val stringBuilder = StringBuilder()
-            while (run {
-                    line = bufferReader.readLine()
-                    line
-                } !=null){
-                stringBuilder.append(line)
+    /*private fun createNotificationChannel(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            val name = "Notification Title"
+            val descriptionText = "Notification Description"
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val channel = NotificationChannel(CHANNEL_ID,name,importance).apply {
+                description = descriptionText
             }
-            fileInputStream?.close()
-            inputStreamReader.close()
-            DidYouSmokeText.text = stringBuilder.toString()
+            val notificationManager : NotificationManager = activity?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
         }
-        catch (exp: Exception){
-            exp.printStackTrace()
-        }
-        return DidYouSmokeText.text.toString()
+    }*/
+    //.setStyle(NotificationCompat.BigPictureStyle().bigPicture(icon))
+
+   /* @RequiresApi(Build.VERSION_CODES.O)
+    private fun onTimeSet(hourOfDay : Int, minutes: Int){
+        val cal : Calendar = Calendar.getInstance()
+        cal.set(Calendar.HOUR_OF_DAY,hourOfDay)
+        cal.set(Calendar.MINUTE,minutes)
+        cal.set(Calendar.SECOND,0)
+        //startAlarm()
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putInt("timesSmoked",timesSmoked)
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun startAlarm(cal : Calendar) {
+        alarmManager= activity?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val intent = Intent(requireContext(),AlertReceiver::class.java)
+        pendingIntent = PendingIntent.getBroadcast(requireContext(),0,intent,0)
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP,cal.timeInMillis,pendingIntent)
     }*/
+
+    /*private fun sendNotification(){
+        val icon = BitmapFactory.decodeResource(resources, R.drawable.launcher_logo_2)
+        val icon2 = BitmapFactory.decodeResource(resources, R.drawable.quitsmokingnowtext)
+        val intent = Intent(requireContext(),MainActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+        val pendingIntent: PendingIntent = PendingIntent.getActivity(requireContext(),0,intent,0)
+        val builder = NotificationCompat.Builder(requireContext(),CHANNEL_ID)
+            .setSmallIcon(R.drawable.launcher_logo_2)
+            .setContentTitle("Quit Smoking Now")
+            .setContentText("The results are ready for you to see. Please view them!")
+            .setLargeIcon(icon)
+            .setContentIntent(pendingIntent)
+            .setStyle(NotificationCompat.BigPictureStyle().bigPicture(icon2))
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+        with(NotificationManagerCompat.from(requireContext())){
+            notify(notificationId,builder.build())
+        }
+    }*/
+
+    /*private fun startThread(){
+        for (int i)
+    }*/
+
+    /*fun clearData(view: View){
+        DidYouSmokeText.text = ""
+    }*/
+
 
     override fun onClick(v: View?) {
         when (v?.id) {
