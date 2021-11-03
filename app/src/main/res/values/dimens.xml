@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources><dimen name="font_large">40dp</dimen>
+<resources>
+    <dimen name="font_large">40dp</dimen>
 
     <dimen name="disclaimer_checkbox_font_size">22dp</dimen>
     <dimen name="disclaimer_checkbox_marginStart">100dp</dimen>
@@ -101,7 +102,17 @@
     <dimen name="subtraction_marginBottom">30dp</dimen>
     <dimen name="main_constraintlayout_marginTop">120dp</dimen>
     <dimen name="main_constraintlayout_marginBottom">10dp</dimen>
-    <!--settings activity-->
+    <!--settings fragment-->
+
+    <!--cravings fragment-->
+    <dimen name="Cravings_textSize">40dp</dimen>
+    <dimen name="Cravings_btntextSize">20dp</dimen>
+
+    <!--
+Refer to App Widget Documentation for margin information
+http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
+    -->
+    <dimen name="widget_margin">0dp</dimen>
 
 </resources>
 

@@ -1,31 +1,16 @@
 package com.example.quitsmoking
 
-import android.app.Activity
 import android.content.Intent
-import android.graphics.Color
-import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.provider.SyncStateContract
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.viewpager.widget.ViewPager
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.quitsmoking.fragments.MainFragment
-import com.example.quitsmoking.fragments.ResultFragment
 import com.example.quitsmoking.fragments.SettingsFragment
+import com.example.quitsmoking.fragments.CravingFragment
 import com.example.quitsmoking.fragments.adapters.ViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
-import java.net.URLClassLoader.newInstance
-
-
 
 
 private const val TIMES_SMOKED = "Times Smoked"
@@ -96,11 +81,16 @@ class MainActivity : AppCompatActivity() {
     private fun setUpTabs(){
         val adapter = ViewPagerAdapter(supportFragmentManager)
         adapter.addFragment(MainFragment(),"Home")
+        adapter.addFragment(CravingFragment(),"Cravings")
         adapter.addFragment(SettingsFragment(),"About")
         viewpager.adapter = adapter
         tabLayout.setupWithViewPager(viewpager)
         tabLayout.getTabAt(0)!!.setIcon(R.drawable.ic_baseline_home_24)
-        tabLayout.getTabAt(1)!!.setIcon(R.drawable.ic_baseline_table_rows_24)
+        tabLayout.getTabAt(1)!!.setIcon(R.drawable.ic_baseline_cancel_24)
+        //tabLayout.getTabAt(2)!!.setIcon(R.drawable.ic_baseline_cancel_24)
+        //tabLayout.getTabAt(3)!!.setIcon(R.drawable.ic_baseline_cancel_24)
+        //tabLayout.getTabAt(4)!!.setIcon(R.drawable.ic_baseline_cancel_24)
+        tabLayout.getTabAt(2)!!.setIcon(R.drawable.ic_baseline_table_rows_24)
     }
 
     override fun onBackPressed() {

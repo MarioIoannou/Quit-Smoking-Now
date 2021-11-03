@@ -1,13 +1,9 @@
 package com.example.quitsmoking
 
-import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.graphics.BitmapFactory
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
-import androidx.core.content.ContentProviderCompat.requireContext
+import com.example.quitsmoking.Services.NotificationService
 
 class AlertReceiver: BroadcastReceiver() {
 

@@ -40,4 +40,11 @@
     <string name="did_you_accidentally_click_more_subtract_one">Did you accidentally click more? Subtract one.</string>
     <string name="subtraction">Subtraction</string>
     <string name="notification_channel_description">This is a channel description</string>
+    <string name="cravings_text">This is a cravings timer.\n This timer will you resist tobacco for\n 4 minutes\n when you have cravings.</string>
+    <string name="begin">Begin</string>
+    <string name="reset">Reset</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="configure">Configure</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">This is an app widget description</string>
 </resources>

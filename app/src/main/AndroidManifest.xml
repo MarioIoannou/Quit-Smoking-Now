@@ -8,10 +8,23 @@
         android:roundIcon="@mipmap/launcher_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuitSmokingNow">
+        <receiver
+            android:name=".widget.QuitSmokingNowWidget"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/quit_smoking_now_widget_info" />
+        </receiver>
+
         <service
-            android:name=".MyService"
+            android:name=".Services.MyService"
             android:enabled="true"
             android:exported="true" />
+
         <activity
             android:name=".IntroActivity"
             android:exported="true"
@@ -19,6 +32,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -40,7 +54,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <receiver android:name=".AlertReceiver"/>
+        <receiver android:name=".AlertReceiver" />
     </application>
 
 </manifest>

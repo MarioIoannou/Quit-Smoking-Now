@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/CravingsFrag"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:gravity="center"
+    android:clickable="true"
+    android:layout_centerHorizontal="true"
+    android:orientation="vertical"
+    tools:context=".fragments.MainFragment"
+    android:focusable="true">
+
+    <TextView
+        android:id="@+id/CravingText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/main_CardView_textview_marginStart"
+        android:layout_marginTop="@dimen/main_CardView_textview_marginTop"
+        android:layout_marginEnd="@dimen/main_CardView_textview_marginEnd"
+        android:layout_marginBottom="@dimen/main_CardView_textview_marginBottom"
+        android:gravity="center"
+        android:text="@string/cravings_text"
+        android:textColor="@color/black"
+        android:textColorHighlight="#FFFFFF"
+        android:textColorHint="#000000"
+        android:textColorLink="#000000"
+        android:textSize="@dimen/Cravings_textSize"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/play_craving"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_baseline_play"
+            android:textColor="@color/black"
+            android:text="@string/begin"
+            android:textSize="@dimen/Cravings_btntextSize"
+            android:textAlignment="center"
+            android:background="@color/white"
+            android:layout_marginStart="@dimen/main_top_button_marginStart"
+            android:layout_marginEnd="@dimen/main_top_button_marginEnd"
+            android:layout_marginTop="@dimen/main_top_button_marginTop"
+            android:layout_marginBottom="@dimen/main_top_button_marginBottom"/>
+
+        <!--<Button
+            android:id="@+id/reset_craving"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_baseline_reset"
+            android:textColor="@color/black"
+            android:text="@string/reset"
+            android:textSize="@dimen/Cravings_btntextSize"
+            android:textAlignment="center"
+            android:background="@color/white"
+            android:layout_marginStart="@dimen/main_top_button_marginStart"
+            android:layout_marginEnd="@dimen/main_top_button_marginEnd"
+            android:layout_marginTop="@dimen/main_top_button_marginTop"
+            android:layout_marginBottom="@dimen/main_top_button_marginBottom"/>-->
+    </LinearLayout>
+
+</LinearLayout>

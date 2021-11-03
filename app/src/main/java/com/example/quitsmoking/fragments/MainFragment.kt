@@ -1,6 +1,8 @@
 package com.example.quitsmoking.fragments
 
 import android.app.*
+import android.appwidget.AppWidgetManager
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -27,6 +29,7 @@ import com.example.quitsmoking.data.Cigarette
 import com.example.quitsmoking.data.CigaretteDao
 import com.example.quitsmoking.data.CigaretteDatabase
 import com.example.quitsmoking.data.CigaretteViewModel
+import com.example.quitsmoking.widget.QuitSmokingNowWidget
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.util.*
@@ -50,12 +53,6 @@ class MainFragment : Fragment(), View.OnClickListener {
     private val CHANNEL_ID = "Channel ID"
     private val notificationId = 1
     private lateinit var dao: CigaretteDao
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        //supportActionBar?.setDisplayHomeAsUpEnabled(true)
-    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -126,6 +123,15 @@ class MainFragment : Fragment(), View.OnClickListener {
                 }
                 saveData("Tsigaro",timesSmoked)
                 println(timesSmoked)
+                context?.let{
+                    val componentName = ComponentName(it, QuitSmokingNowWidget::class.java)
+                    val intentWidget = Intent(requireContext(), QuitSmokingNowWidget::class.java)
+                    intentWidget.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+                    val ids = AppWidgetManager.getInstance(it).getAppWidgetIds(componentName)
+                    intentWidget.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
+                    intentWidget.putExtra("smokes",timesSmoked)
+                    requireContext().sendBroadcast(intentWidget)
+                }
             }
 
         }else{

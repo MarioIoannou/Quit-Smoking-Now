@@ -1,4 +1,4 @@
-package com.example.quitsmoking
+package com.example.quitsmoking.Services
 
 import android.annotation.SuppressLint
 import android.app.*
@@ -6,8 +6,9 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.graphics.Color
-import android.media.RingtoneManager
 import android.os.Build
+import com.example.quitsmoking.R
+import com.example.quitsmoking.ResultActivity
 import java.util.*
 
 class NotificationService: IntentService("NotificationService")  {
