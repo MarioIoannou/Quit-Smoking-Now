@@ -2,10 +2,7 @@ package com.example.quitsmoking.fragments
 
 import android.app.*
 import android.appwidget.AppWidgetManager
-import android.content.ComponentName
-import android.content.Context
-import android.content.Intent
-import android.content.SharedPreferences
+import android.content.*
 import android.graphics.Color
 import android.media.MediaPlayer
 import android.os.Build
@@ -40,6 +37,7 @@ class MainFragment : Fragment(), View.OnClickListener {
     //val timeNow: org.joda.time.LocalTime = org.joda.time.LocalTime.now()
     //val time : String = "01:51:00"
     //private val deadline: org.joda.time.LocalTime = org.joda.time.LocalTime("01:51:00")
+    var receiver: BroadcastReceiver? = null
     private lateinit var  mCigaretteViewModel: CigaretteViewModel
     private lateinit var pendingIntent : PendingIntent
     private var alarmManager: AlarmManager? = null
@@ -60,6 +58,7 @@ class MainFragment : Fragment(), View.OnClickListener {
         val cig_btn: ImageButton = view.findViewById(R.id.CigaretteButton)
         val sub_btn: Button = view.findViewById(R.id.subtractCig)
         val txt : TextView = view.findViewById(R.id.DidYouSmokeText)
+        //configureReceiver()
         //mCigaretteViewModel = ViewModelProvider(this).get(CigaretteViewModel::class.java)
         alarmManager = context?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         pendingIntent = Intent(context, AlertReceiver::class.java).let { intent ->
@@ -124,11 +123,11 @@ class MainFragment : Fragment(), View.OnClickListener {
                 saveData("Tsigaro",timesSmoked)
                 println(timesSmoked)
                 context?.let{
-                    val componentName = ComponentName(it, QuitSmokingNowWidget::class.java)
-                    val intentWidget = Intent(requireContext(), QuitSmokingNowWidget::class.java)
-                    intentWidget.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
-                    val ids = AppWidgetManager.getInstance(it).getAppWidgetIds(componentName)
-                    intentWidget.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
+                    //val componentName = ComponentName(it, QuitSmokingNowWidget::class.java)
+                    val intentWidget = Intent(requireContext(), QuitSmokingNowWidget::Widget.class)
+                    //intentWidget.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+                    //val ids = AppWidgetManager.getInstance(it).getAppWidgetIds(componentName)
+                   // intentWidget.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
                     intentWidget.putExtra("smokes",timesSmoked)
                     requireContext().sendBroadcast(intentWidget)
                 }
@@ -210,6 +209,36 @@ class MainFragment : Fragment(), View.OnClickListener {
             Log.e("Student", "$tsigara")
         }
     }
+
+   /* fun broadcastIntent(view: View) {
+        val intent = Intent()
+        intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+        intent.putExtra("smokes",timesSmoked)
+        requireContext().sendBroadcast(intent)
+    }
+
+    private fun configureReceiver() {
+        val intent = Intent()
+        val filter = IntentFilter()
+        filter.addAction( AppWidgetManager.ACTION_APPWIDGET_UPDATE)
+        intent.putExtra("smokes",timesSmoked)
+        receiver = MyReceiver()
+        requireActivity().registerReceiver(receiver, filter)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        requireActivity().unregisterReceiver(receiver)
+    }*/
+    /*context?.let{
+                    val componentName = ComponentName(it, QuitSmokingNowWidget::class.java)
+                    val intentWidget = Intent(requireContext(), QuitSmokingNowWidget::class.java)
+                    intentWidget.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+                    val ids = AppWidgetManager.getInstance(it).getAppWidgetIds(componentName)
+                    intentWidget.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
+                    intentWidget.putExtra("smokes",timesSmoked)
+                    requireContext().sendBroadcast(intentWidget)
+                }*/
 
     /*private fun createNotificationChannel(){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){

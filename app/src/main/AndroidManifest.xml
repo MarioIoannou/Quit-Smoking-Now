@@ -9,6 +9,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuitSmokingNow">
         <receiver
+            android:name=".MyReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
+        <receiver
             android:name=".widget.QuitSmokingNowWidget"
             android:exported="true">
             <intent-filter>
