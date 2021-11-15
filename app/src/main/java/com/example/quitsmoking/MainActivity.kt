@@ -1,6 +1,9 @@
 package com.example.quitsmoking
 
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.Color.RED
+import android.graphics.Color.red
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -9,6 +12,7 @@ import android.widget.Toast
 import com.example.quitsmoking.fragments.MainFragment
 import com.example.quitsmoking.fragments.SettingsFragment
 import com.example.quitsmoking.fragments.CravingFragment
+import com.example.quitsmoking.fragments.SpendingFragment
 import com.example.quitsmoking.fragments.adapters.ViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -80,17 +84,20 @@ class MainActivity : AppCompatActivity() {
 
     private fun setUpTabs(){
         val adapter = ViewPagerAdapter(supportFragmentManager)
-        adapter.addFragment(MainFragment(),"Home")
-        adapter.addFragment(CravingFragment(),"Cravings")
-        adapter.addFragment(SettingsFragment(),"About")
+        adapter.addFragment(MainFragment(),"")//Home
+        adapter.addFragment(CravingFragment(),"")//Cravings
+        adapter.addFragment(SpendingFragment(),"")//Cigarettes Spending
+        adapter.addFragment(SettingsFragment(),"")//About
         viewpager.adapter = adapter
         tabLayout.setupWithViewPager(viewpager)
+        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#FF0000"))
+        tabLayout.setSelectedTabIndicatorHeight(8)
         tabLayout.getTabAt(0)!!.setIcon(R.drawable.ic_baseline_home_24)
         tabLayout.getTabAt(1)!!.setIcon(R.drawable.ic_baseline_cancel_24)
-        //tabLayout.getTabAt(2)!!.setIcon(R.drawable.ic_baseline_cancel_24)
+        tabLayout.getTabAt(2)!!.setIcon(R.drawable.ic_baseline_attach_money_24)
         //tabLayout.getTabAt(3)!!.setIcon(R.drawable.ic_baseline_cancel_24)
         //tabLayout.getTabAt(4)!!.setIcon(R.drawable.ic_baseline_cancel_24)
-        tabLayout.getTabAt(2)!!.setIcon(R.drawable.ic_baseline_table_rows_24)
+        tabLayout.getTabAt(3)!!.setIcon(R.drawable.ic_baseline_table_rows_24)
     }
 
     override fun onBackPressed() {

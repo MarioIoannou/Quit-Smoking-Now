@@ -13,5 +13,5 @@ data class Cigarette(
         val id: Int,
 
     @ColumnInfo(name = "Date")
-        val date: Date? = Date(System.currentTimeMillis())
+        val date: Date?
     )

@@ -1,4 +1,4 @@
-package com.example.quitsmoking.fragments.adapters
+package com.example.quitsmoking.fragments
 
 import android.content.Intent
 import android.media.MediaPlayer
@@ -59,8 +59,8 @@ class SplashQuestionFragment : Fragment() {
                 val intent = Intent(activity?.baseContext, MainActivity::class.java)
                 intent.putExtra("varOne",HowMuchEdit.text.toString())
                 intent.putExtra("varTwo",HowOldEdit.text.toString())
-                btn_submit.startAnimation(scaledown)
-                btn_submit.startAnimation(scaleup)
+                btn_question_submit.startAnimation(scaledown)
+                btn_question_submit.startAnimation(scaleup)
                 startActivity(intent)
             }
         }

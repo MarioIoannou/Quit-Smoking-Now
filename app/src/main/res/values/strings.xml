@@ -29,11 +29,14 @@
     <string name="help_message">This app will help you lower your cigarette consumption, even quit smoking, with the help of scientific papers from universities or online researches.\n
     \nFor you to have better results and the results that the app is giving, you must lower you consumption 50% and maintain it as long as you can.</string>
 
+    <string name="Spending_head_textview">Smoking cigarettes is expensive. Use our calculator to find out how much of your money is going up in smoke.</string>
     <string name="Intro_String"><b>Welcome to Quit Smoking Now app.
         This app will help you lower your cigarette consumption, even quit smoking, with the help of specific scientific papers. </b></string>
     <string name="string_university_of_peloponnese">Welcome\nThis is an bachelor\'s thesis app,\n created for University of Peloponnese</string>
     <string name="this_app_will_help_you_lower">This app will help you lower your cigarette consumption, even quit smoking, with the help of scientific papers from universities, researches and researchers papers.\n \nFor you to have better results and the results that the app is giving, you must lower you consumption 50% and maintain it as long as you can.</string>
     <string name="about">About</string>
+    <string name="How_many_smoke_per_day">How many cigarettes do you smoke per day?</string>
+    <string name="How_much_pay_per_pack">How much do you pay per pack?</string>
     <string name="here_goes_how_much">Here goes how much</string>
     <string name="the_links_for_the_papers_are_below_for_you_to_see">The links for the papers, are below for you to see:</string>
     <string name="did_you_smoke_any_cigarettes_today">Did you smoke any cigarettes today?</string>
@@ -48,3 +51,4 @@
     <string name="add_widget">Add widget</string>
     <string name="app_widget_description">This is an app widget description</string>
 </resources>
+

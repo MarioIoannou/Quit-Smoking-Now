@@ -19,15 +19,17 @@ class CravingFragment : Fragment() {
         //val btn_reset : Button = view.findViewById(R.id.reset_craving)
         val carvingText : TextView = view.findViewById(R.id.CravingText)
         btn_play.setOnClickListener {
-            object : CountDownTimer(240000, 1000) {
+            object : CountDownTimer(240100, 1000) {
 
                 override fun onTick(millisUntilFinished: Long) {
-                    carvingText.setText("Please hold on,\n" + millisUntilFinished / 1000 + " remaining")
+                    carvingText.setText("" + millisUntilFinished / 1000 + "")
+                    carvingText.textSize = 130F
+                    btn_play.visibility = View.INVISIBLE
                 }
 
                 override fun onFinish() {
-                    carvingText.setText("DONE!")
-                    carvingText.setTextSize(100F)
+                    carvingText.text = "DONE!"
+                    carvingText.textSize = 100F
                     carvingText.setTextColor(Color.RED)
                 }
             }.start()

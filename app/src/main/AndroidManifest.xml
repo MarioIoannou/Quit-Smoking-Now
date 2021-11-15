@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.quitsmoking">
+
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
 
     <application
         android:icon="@mipmap/launcher_logo"
@@ -8,10 +13,16 @@
         android:roundIcon="@mipmap/launcher_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuitSmokingNow">
-        <receiver
-            android:name=".MyReceiver"
+        <service
+            android:name=".Services.AlarmService"
             android:enabled="true"
-            android:exported="true"></receiver>
+            android:exported="true"
+            tools:ignore="Instantiatable" />
+
+        <receiver
+            android:name=".Services.MyReceiver"
+            android:enabled="true"
+            android:exported="true" />
         <receiver
             android:name=".widget.QuitSmokingNowWidget"
             android:exported="true">
@@ -23,11 +34,20 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/quit_smoking_now_widget_info" />
         </receiver>
+        <receiver
+            android:name=".Services.AlertReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
 
         <service
             android:name=".Services.MyService"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="false" />
 
         <activity
             android:name=".IntroActivity"
@@ -53,12 +73,14 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".CalculatorResultActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-
-        <receiver android:name=".AlertReceiver" />
     </application>
-
 </manifest>

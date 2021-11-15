@@ -37,7 +37,7 @@ class CigaretteQuestion : AppCompatActivity() {
             supportActionBar?.hide()
         }
         //setupActionBar()
-        btn_submit.setOnClickListener {
+        btn_question_submit.setOnClickListener {
             if ((HowMuchEdit.text.toString().isBlank()) || (HowOldEdit.text.toString().isBlank())) {
                 Toast.makeText(
                     this@CigaretteQuestion,
@@ -70,8 +70,8 @@ class CigaretteQuestion : AppCompatActivity() {
                 val intent = Intent(this, MainActivity::class.java)
                 intent.putExtra("varOne",HowMuchEdit.text.toString())
                 intent.putExtra("varTwo",HowOldEdit.text.toString())
-                btn_submit.startAnimation(scaledown)
-                btn_submit.startAnimation(scaleup)
+                btn_question_submit.startAnimation(scaledown)
+                btn_question_submit.startAnimation(scaleup)
                 startActivity(intent)
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
                 finish()

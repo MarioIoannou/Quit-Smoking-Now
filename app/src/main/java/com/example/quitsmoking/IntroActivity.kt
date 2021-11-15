@@ -18,7 +18,6 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
-import com.example.quitsmoking.fragments.adapters.SplashQuestionFragment
 import kotlinx.android.synthetic.main.activity_intro.*
 
 class IntroActivity : AppCompatActivity() {

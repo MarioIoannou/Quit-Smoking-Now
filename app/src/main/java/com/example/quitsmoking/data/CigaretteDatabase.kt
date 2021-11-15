@@ -22,13 +22,13 @@ abstract class CigaretteDatabase: RoomDatabase() {
                 return tempInstance
             }
             synchronized(this){
-                val instane = Room.databaseBuilder(
+                val instance = Room.databaseBuilder(
                     context.requireContext(),
                     CigaretteDatabase::class.java,
                     "Cigarette_table"
                 ).build()
-                INSTANCE = instane
-                return instane
+                INSTANCE = instance
+                return instance
             }
         }
     }

@@ -68,7 +68,30 @@
     <dimen name="disclaimer_text_marginEnd">20dp</dimen>
     <dimen name="disclaimer_text_marginTop">20dp</dimen>
     <dimen name="disclaimer_text_marginBottom">20dp</dimen>
-    <!--cigarette question activity-->
+    <!--Spending Fragment-->
+    <dimen name="Spending_Head_textview_font_size">25dp</dimen>
+    <dimen name="Spending_Head_textview_marginStart">10dp</dimen>
+    <dimen name="Spending_Head_textview_marginEnd">10dp</dimen>
+    <dimen name="Spending_Head_textview_marginTop">10dp</dimen>
+    <dimen name="Spending_Head_textview_marginBottom">50dp</dimen>
+
+    <dimen name="Spending_CardView_textview_font_size">30dp</dimen>
+    <dimen name="Spending_CardView_textview_marginStart">10dp</dimen>
+    <dimen name="Spending_CardView_textview_marginEnd">10dp</dimen>
+    <dimen name="Spending_CardView_textview_marginTop">5dp</dimen>
+    <dimen name="Spending_CardView_textview_marginBottom">10dp</dimen>
+
+    <dimen name="Spending_EditText">30dp</dimen>
+    <dimen name="Spending_EditText_marginStart">10dp</dimen>
+    <dimen name="Spending_EditText_marginEnd">10dp</dimen>
+    <dimen name="Spending_EditText_marginTop">5dp</dimen>
+    <dimen name="Spending_EditText_marginBottom">50dp</dimen>
+    <!--CalcResultActivity-->
+    <dimen name="CalcResultActivity_CardView_marginStart">30dp</dimen>
+    <dimen name="CalcResultActivity_CardView_marginEnd">30dp</dimen>
+    <dimen name="CalcResultActivity_CardView_marginTop">80dp</dimen>
+    <dimen name="CalcResultActivity_CardView_elevation">10dp</dimen>
+    <dimen name="CalcResultActivity_CardView_marginBottom">50dp</dimen>
 
     <!--main activity-->
     <dimen name="main_top_button_marginStart">10dp</dimen>
