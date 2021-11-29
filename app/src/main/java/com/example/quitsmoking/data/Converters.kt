@@ -1,10 +1,6 @@
-package com.example.quitsmoking
+package com.example.quitsmoking.data
 
-import android.provider.SyncStateContract
 import androidx.room.TypeConverter
-import java.text.DateFormat
-import java.text.ParseException
-import java.text.SimpleDateFormat
 import java.util.*
 
 class Converters {

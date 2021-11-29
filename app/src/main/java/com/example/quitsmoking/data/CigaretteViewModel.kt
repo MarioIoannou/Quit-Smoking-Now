@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 
 class CigaretteViewModel(application: Application): AndroidViewModel(application) {
 
-    private val readAllData: LiveData<List<Cigarette>>
+    /*private val readAllData: LiveData<List<Cigarette>>
     private val repository: CigaretteRepository
 
     init {
@@ -23,5 +23,5 @@ class CigaretteViewModel(application: Application): AndroidViewModel(application
         viewModelScope.launch(Dispatchers.IO){
             repository.addCigarette(cigarette)
         }
-    }
+    }*/
 }

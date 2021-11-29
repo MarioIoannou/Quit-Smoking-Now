@@ -1,7 +1,6 @@
 package com.example.quitsmoking.fragments
 
 import android.app.*
-import android.appwidget.AppWidgetManager
 import android.content.*
 import android.graphics.BitmapFactory
 import android.graphics.Color
@@ -24,35 +23,34 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.example.quitsmoking.*
-import com.example.quitsmoking.Services.AlertReceiver
+import com.example.quitsmoking.R
 import com.example.quitsmoking.data.Cigarette
 import com.example.quitsmoking.data.CigaretteDao
 import com.example.quitsmoking.data.CigaretteDatabase
-import com.example.quitsmoking.data.CigaretteViewModel
-import com.example.quitsmoking.widget.QuitSmokingNowWidget
+import com.google.android.gms.ads.*
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import java.time.LocalTime
 import java.util.*
 
+@DelicateCoroutinesApi
 class MainFragment : Fragment(), View.OnClickListener {
 
     @RequiresApi(Build.VERSION_CODES.O)
-    //val timeNow: org.joda.time.LocalTime = org.joda.time.LocalTime.now()
-    //val time : String = "01:51:00"
-    //private val deadline: org.joda.time.LocalTime = org.joda.time.LocalTime("01:51:00")
-
     var receiver: BroadcastReceiver? = null
-    private lateinit var mCigaretteViewModel: CigaretteViewModel
+    //private lateinit var mCigaretteViewModel: CigaretteViewModel
     private lateinit var pendingIntent: PendingIntent
 
-    //Database
+    //AdMob
+    lateinit var mAdView : AdView
 
     //Alarm
-    private var alarmManager: AlarmManager? = null
-    private lateinit var alarmIntent: PendingIntent
-    private var HOUR_TO_SHOW_PUSH = 21
+    private var HOUR_TO_SHOW_PUSH = 23
+    private var MINUTE_TO_SHOW_PUSH = 28
+
+    //Notification
+    private val CHANNEL_ID = "Channel ID"
+    private val notificationId = 1
 
     //General
     private var timesSmoked: Int = 1
@@ -62,51 +60,25 @@ class MainFragment : Fragment(), View.OnClickListener {
     val myPreferences = "mypref"
     val timekey = "timessmoked"
     var days = 1
-    private val CHANNEL_ID = "Channel ID"
-    private val notificationId = 1
+
+
+
     private lateinit var dao: CigaretteDao
 
-    @DelicateCoroutinesApi
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val view: View = inflater.inflate(R.layout.fragment_main, container, false)
         val cig_btn: ImageButton = view.findViewById(R.id.CigaretteButton)
         val sub_btn: Button = view.findViewById(R.id.subtractCig)
         val txt: TextView = view.findViewById(R.id.DidYouSmokeText)
-        createNotificationChannel()
-        //configureReceiver()
-        //mCigaretteViewModel = ViewModelProvider(this).get(CigaretteViewModel::class.java)
-        alarmManager = context?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        alarmIntent = Intent(context, AlertReceiver::class.java).let { intent ->
-            PendingIntent.getBroadcast(context, 0, intent, 0)
-        }
-        /*val calendarStart: Calendar = Calendar.getInstance().apply {
-            timeInMillis = System.currentTimeMillis()
-            set(Calendar.HOUR_OF_DAY, 18)
-            set(Calendar.MINUTE,3)
-        }
-        alarmManager?.setInexactRepeating(
-            AlarmManager.RTC_WAKEUP,
-            calendarStart.timeInMillis,
-            AlarmManager.INTERVAL_DAY,
-            alarmIntent
-        )*/
-
-        /* val calendarEnd: Calendar = Calendar.getInstance().apply {
-             timeInMillis = System.currentTimeMillis()
-             set(Calendar.HOUR_OF_DAY, 17)
-             set(Calendar.MINUTE,42)
-         }
-         alarmManager?.cancel(alarmIntent)*/
-
-        //---------------------//var dbInstance = CigaretteDatabase.getDatabase()
-        val tsigaro = Cigarette(timesSmoked, Date()) as Cigarette
         timesSmoked = loadData()
         days = loadData()
+        val time:Long = Date().time
+        println("Time $time")
         if (days == 1) {
             //transaction(days)
             val intent1 = Intent(activity, ResultActivity::class.java)
@@ -115,6 +87,7 @@ class MainFragment : Fragment(), View.OnClickListener {
             println("1st print: $days")
             days++
         }
+
         cig_btn.setOnClickListener {
             txt.text = timesSmoked.toString()
             txt.textSize = 100F
@@ -145,28 +118,13 @@ class MainFragment : Fragment(), View.OnClickListener {
                 }
             }
             saveData("Tsigaro", timesSmoked)
-            //println(timesSmoked)
-            //sendIntent(timesSmoked)
-            //updateWidget(timesSmoked)
-            //intent.putExtra("Perday",PerDay.text.toString())
-            //intent.putExtra("Perpack",PerPack.text.toString())
-            context?.let {
-                //val componentName = ComponentName(it, QuitSmokingNowWidget::class.java)
-                val intentWidget = Intent(requireContext(), QuitSmokingNowWidget::class.java)
-                //intentWidget.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
-                //val ids = AppWidgetManager.getInstance(it).getAppWidgetIds(componentName)
-                // intentWidget.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
-                intentWidget.putExtra("smokes", timesSmoked.toString())
-                requireContext().sendBroadcast(intentWidget)
-            }
         }
-        //---------------------//val dayconsumption = CigaretteDatabase.getDatabase(this).cigaretteDao().findCigaretteConsumption()
-        val week = Calendar.getInstance(TimeZone.getTimeZone("UTC")).get(Calendar.WEEK_OF_YEAR)
-        println("Week : $week")
+        /*val week = Calendar.getInstance(TimeZone.getTimeZone("UTC")).get(Calendar.WEEK_OF_YEAR)
+        println("Week : $week")*/
 
-        if (LocalTime.now() in LocalTime.of(21, 0, 0)..LocalTime.of(21, 0, 30)) {
+        /*if (LocalTime.now() in LocalTime.of(21, 0, 0)..LocalTime.of(21, 0, 30)) {
             sendNotification()
-        }
+        }*/
         saveData("Days", days)
         sub_btn.setOnClickListener {
             deleteCigaretteData()
@@ -207,7 +165,7 @@ class MainFragment : Fragment(), View.OnClickListener {
 
     @DelicateCoroutinesApi
     fun addCigaretteData() {
-        val dbInstance = CigaretteDatabase.getDatabase(this)
+        val dbInstance = CigaretteDatabase.getDatabase(requireContext())
         val tsigaro = Cigarette(timesSmoked, Date()) as Cigarette
         GlobalScope.launch {
             dbInstance.cigaretteDao().addCigarette(tsigaro)
@@ -218,7 +176,7 @@ class MainFragment : Fragment(), View.OnClickListener {
 
     @DelicateCoroutinesApi
     fun deleteCigaretteData() {
-        val dbInstance = CigaretteDatabase.getDatabase(this)
+        val dbInstance = CigaretteDatabase.getDatabase(requireContext())
         val tsigaro = Cigarette(timesSmoked, Date()) as Cigarette
         GlobalScope.launch {
             dbInstance.cigaretteDao().deleteCigarette(tsigaro)
@@ -227,7 +185,7 @@ class MainFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    fun schedulePushNotifications() {
+    /*fun schedulePushNotifications() {
         val calendar = GregorianCalendar.getInstance().apply {
             if (get(Calendar.HOUR_OF_DAY) >= HOUR_TO_SHOW_PUSH) {
                 add(Calendar.DAY_OF_MONTH, 1)
@@ -235,6 +193,7 @@ class MainFragment : Fragment(), View.OnClickListener {
 
             set(Calendar.HOUR_OF_DAY, HOUR_TO_SHOW_PUSH)
             set(Calendar.MINUTE, 0)
+            //set(Calendar.MINUTE, MINUTE_TO_SHOW_PUSH)
             set(Calendar.SECOND, 0)
             set(Calendar.MILLISECOND, 0)
         }
@@ -245,11 +204,12 @@ class MainFragment : Fragment(), View.OnClickListener {
             AlarmManager.INTERVAL_DAY,
             alarmIntent
         )
-    }
+        Log.e("PushNotifications","Broadcast Sent")
+    }*/
 
-    //----------------- It works --------------------------------------------------
+    //----------------- It works AppWidget --------------------------------------------------
 
-    private fun initReceiver() {
+    /*private fun initReceiver() {
         val receiver = QuitSmokingNowWidget()
         val intent = Intent()
         val filter = IntentFilter(Intent.ACTION_POWER_DISCONNECTED)
@@ -262,41 +222,9 @@ class MainFragment : Fragment(), View.OnClickListener {
         intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
         intent.putExtra("smokes", value)
         requireContext().sendBroadcast(intent)
-    }
+    }*/
 
     //------------------------------------------------------------------------------
-
-    /* private fun updateWidget(value: Int){
-         val int = Intent(requireContext(), QuitSmokingNowWidget::class.java)
-         int.apply {
-             putExtra("smokes", value)
-             action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
-         }
-     }*/
-
-    /*private fun configureReceiver() {
-        val intent = Intent()
-        val filter = IntentFilter()
-        filter.addAction( AppWidgetManager.ACTION_APPWIDGET_UPDATE)
-        intent.putExtra("smokes",timesSmoked)
-        receiver = MyReceiver()
-        requireActivity().registerReceiver(receiver, filter)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        requireActivity().unregisterReceiver(receiver)
-    }*/
-    /*context?.let{
-                    val componentName = ComponentName(it, QuitSmokingNowWidget::class.java)
-                    val intentWidget = Intent(requireContext(), QuitSmokingNowWidget::class.java)
-                    intentWidget.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
-                    val ids = AppWidgetManager.getInstance(it).getAppWidgetIds(componentName)
-                    intentWidget.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
-                    intentWidget.putExtra("smokes",timesSmoked)
-                    requireContext().sendBroadcast(intentWidget)
-                }*/
-
 
     private fun createNotificationChannel() {
         val name = "Notification Title"
@@ -349,14 +277,44 @@ class MainFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    /*private fun startThread(){
-        for (int i)
-    }*/
-
     /*fun clearData(view: View){
         DidYouSmokeText.text = ""
     }*/
 
+    /*private fun loadBannerAd(){
+        MobileAds.initialize(requireContext()) {}
+        mAdView = requireView().findViewById(R.id.adViewMain)
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
+        mAdView.adListener = object: AdListener() {
+            override fun onAdLoaded() {
+                // Code to be executed when an ad finishes loading.
+                Log.e("onAdLoaded - Main", "Ad Loaded")
+            }
+
+            override fun onAdFailedToLoad(adError: LoadAdError) {
+                // Code to be executed when an ad request fails.
+                Log.e("onAdFailedToLoad - Main", "Ad Failed To Load")
+            }
+
+            override fun onAdOpened() {
+                // Code to be executed when an ad opens an overlay that
+                // covers the screen.
+                Log.e("onAdOpened - Main", "Ad Opened")
+            }
+
+            override fun onAdClicked() {
+                // Code to be executed when the user clicks on an ad.
+                Log.e("onAdClicked - Main", "Ad Clicked")
+            }
+
+            override fun onAdClosed() {
+                // Code to be executed when the user is about to return
+                // to the app after tapping on an ad.
+                Log.e("onAdClosed - Main", "Ad Closed")
+            }
+        }
+    }*/
 
     override fun onClick(v: View?) {
         when (v?.id) {

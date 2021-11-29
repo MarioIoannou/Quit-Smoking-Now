@@ -1,11 +1,10 @@
 package com.example.quitsmoking.data
 
+import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.example.quitsmoking.Converters
-import com.example.quitsmoking.fragments.MainFragment
 
 @TypeConverters(Converters::class)
 @Database(entities = [Cigarette::class],version = 1,exportSchema = false)
@@ -16,14 +15,14 @@ abstract class CigaretteDatabase: RoomDatabase() {
         @Volatile
         private var INSTANCE: CigaretteDatabase? = null
 
-        fun getDatabase(context: MainFragment): CigaretteDatabase{
+        fun getDatabase(context: Context): CigaretteDatabase{
             val tempInstance = INSTANCE
             if (tempInstance != null){
                 return tempInstance
             }
             synchronized(this){
                 val instance = Room.databaseBuilder(
-                    context.requireContext(),
+                    context,
                     CigaretteDatabase::class.java,
                     "Cigarette_table"
                 ).build()

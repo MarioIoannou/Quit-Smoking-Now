@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.IBinder
 import java.util.*
 
-class TimerService: Service() {
+class TimerService : Service() {
 
     override fun onBind(intent: Intent?): IBinder? = null
 

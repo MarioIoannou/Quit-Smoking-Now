@@ -1,4 +1,4 @@
-package com.example.quitsmoking.Services
+package com.example.quitsmoking.AlarmManager
 
 import android.annotation.SuppressLint
 import android.app.*
@@ -7,11 +7,15 @@ import android.content.Intent
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Build
+import android.widget.Toast
 import com.example.quitsmoking.R
 import com.example.quitsmoking.ResultActivity
+import com.example.quitsmoking.data.CigaretteDatabase
+import com.example.quitsmoking.fragments.MainFragment
+import kotlinx.coroutines.*
 import java.util.*
 
-class NotificationService: IntentService("NotificationService")  {
+class NotificationService: IntentService("NotificationService") {
 
     private lateinit var mNotification: Notification
     private val mNotificationId: Int = 1000
@@ -23,7 +27,8 @@ class NotificationService: IntentService("NotificationService")  {
             // Create the NotificationChannel, but only on API 26+ because
             // the NotificationChannel class is new and not in the support library
             val context = this.applicationContext
-            val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            val notificationManager =
+                context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             val importance = NotificationManager.IMPORTANCE_HIGH
             val notificationChannel = NotificationChannel(CHANNEL_ID, CHANNEL_NAME, importance)
             notificationChannel.enableVibration(true)
@@ -41,6 +46,47 @@ class NotificationService: IntentService("NotificationService")  {
         const val CHANNEL_NAME = "Sample Notification"
     }
 
+    @DelicateCoroutinesApi
+    fun compareCigarettes(context: Context) {
+
+        val dbInstance = CigaretteDatabase.getDatabase(context)
+        var todayCigarettes = 0
+        var yesterdayCigarettes = 0
+        var result = ""
+        val intentResult = Intent(this, MainFragment::class.java)
+        val intentMain = Intent(this, MainFragment::class.java)
+
+        GlobalScope.launch {
+            todayCigarettes = dbInstance.cigaretteDao().getTodayCigarettes()
+            yesterdayCigarettes = dbInstance.cigaretteDao().getYesterdayCigarettes()
+            when {
+                yesterdayCigarettes > todayCigarettes -> {
+                    Intent().also { intentMain ->
+                        intentMain.putExtra("Done", 1)
+                        sendBroadcast(intentMain)
+                        println("Put Extra: Done-Less sent")
+                        intentResult.putExtra("Less", yesterdayCigarettes)
+                        sendBroadcast(intentResult)
+                    }
+                }
+                yesterdayCigarettes < todayCigarettes -> {
+                    Intent().also { intentMain ->
+                        intentMain.putExtra("Done", 1)
+                        sendBroadcast(intentMain)
+                        println("Put Extra: Done-More sent")
+                        intentResult.putExtra("More", yesterdayCigarettes)
+                        sendBroadcast(intentResult)
+                    }
+                }
+                else -> ({
+                    println("Nothing happened")
+                }).toString()
+            }
+            withContext(Dispatchers.Main) {
+                Toast.makeText(context, result, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 
     override fun onHandleIntent(intent: Intent?) {
         //Create Channel
@@ -64,7 +110,12 @@ class NotificationService: IntentService("NotificationService")  {
             notifyIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             val calendar = Calendar.getInstance()
             calendar.timeInMillis = timestamp
-            val pendingIntent = PendingIntent.getActivity(context, 0, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+            val pendingIntent = PendingIntent.getActivity(
+                context,
+                0,
+                notifyIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT
+            )
             val res = this.resources
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -75,8 +126,10 @@ class NotificationService: IntentService("NotificationService")  {
                     .setLargeIcon(BitmapFactory.decodeResource(res, R.drawable.launcher_logo_2))
                     .setAutoCancel(true)
                     .setContentTitle(title)
-                    .setStyle(Notification.BigTextStyle()
-                        .bigText(message))
+                    .setStyle(
+                        Notification.BigTextStyle()
+                            .bigText(message)
+                    )
                     .setContentText(message).build()
             } else {
                 mNotification = Notification.Builder(this)
@@ -87,13 +140,18 @@ class NotificationService: IntentService("NotificationService")  {
                     .setAutoCancel(true)
                     .setPriority(Notification.PRIORITY_MAX)
                     .setContentTitle(title)
-                    .setStyle(Notification.BigTextStyle()
-                        .bigText(message))
+                    .setStyle(
+                        Notification.BigTextStyle()
+                            .bigText(message)
+                    )
                     .setContentText(message).build()
             }
-            notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager =
+                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             // mNotificationId is a unique int for each notification that you must define
             notificationManager.notify(mNotificationId, mNotification)
         }
     }
+
+
 }

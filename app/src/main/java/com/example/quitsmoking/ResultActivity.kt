@@ -16,10 +16,10 @@ class ResultActivity : AppCompatActivity() {
         }
         setupActionBar()
         var perm : Int = 1
-        val PerDay = intent.getStringExtra("Perday")
+        /*val PerDay = intent.getStringExtra("Perday")
         println("PerDay: $PerDay")
         val PerPack = intent.getStringExtra("Perpack")
-        println("PerPack: $PerPack")
+        println("PerPack: $PerPack")*/
         //println(calculator(PerDay!!, PerPack!!))
         if(perm == 1){
             var firstTime = intent?.getIntExtra("first",1)

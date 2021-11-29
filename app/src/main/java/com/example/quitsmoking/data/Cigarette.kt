@@ -1,10 +1,8 @@
 package com.example.quitsmoking.data
 
 import androidx.room.*
-import com.example.quitsmoking.Converters
-import org.joda.time.DateTime
-import java.time.LocalDateTime
-import java.time.OffsetDateTime
+import androidx.room.TypeConverters
+import com.example.quitsmoking.data.Converters
 import java.util.*
 
 @Entity(tableName = "Cigarettes_table")
@@ -12,6 +10,7 @@ data class Cigarette(
     @PrimaryKey
         val id: Int,
 
+    @TypeConverters(Converters::class)
     @ColumnInfo(name = "Date")
-        val date: Date?
+        val date: Date? = Date(System.currentTimeMillis())
     )

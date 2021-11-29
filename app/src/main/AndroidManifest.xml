@@ -4,8 +4,9 @@
     package="com.example.quitsmoking">
 
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:icon="@mipmap/launcher_logo"
@@ -13,27 +14,18 @@
         android:roundIcon="@mipmap/launcher_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuitSmokingNow">
-        <service
-            android:name=".Services.AlarmService"
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713" />
+        <!--ca-app-pub-2379578394910008/5141697841-->
+
+        <!--<service
+            android:name=".AlarmManager.AlarmService"
             android:enabled="true"
             android:exported="true"
-            tools:ignore="Instantiatable" />
+            tools:ignore="Instantiatable" />-->
 
-        <receiver
-            android:name=".Services.MyReceiver"
-            android:enabled="true"
-            android:exported="true" />
-        <receiver
-            android:name=".widget.QuitSmokingNowWidget"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/quit_smoking_now_widget_info" />
-        </receiver>
         <receiver
             android:name=".Services.AlertReceiver"
             android:enabled="true"
@@ -41,11 +33,12 @@
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+                <action android:name="MyBroadcastReceiverAction" />
             </intent-filter>
         </receiver>
 
         <service
-            android:name=".Services.MyService"
+            android:name=".Services.ComparisonService"
             android:enabled="true"
             android:exported="false" />
 

@@ -48,7 +48,7 @@ class IntroActivity : AppCompatActivity() {
 
         dotsLayout = findViewById<LinearLayout>(R.id.layoutDots)
         // layouts of all intro sliders
-        layouts = intArrayOf(R.layout.slider1, R.layout.slider2)
+        layouts = intArrayOf(R.layout.slider1, R.layout.slider2,R.layout.slider3)
 
         // adding bottom dots
         addBottomDots(0)
