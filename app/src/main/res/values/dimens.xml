@@ -72,7 +72,7 @@
     <dimen name="Spending_Head_textview_font_size">25dp</dimen>
     <dimen name="Spending_Head_textview_marginStart">10dp</dimen>
     <dimen name="Spending_Head_textview_marginEnd">10dp</dimen>
-    <dimen name="Spending_Head_textview_marginTop">10dp</dimen>
+    <dimen name="Spending_Head_textview_marginTop">30dp</dimen>
     <dimen name="Spending_Head_textview_marginBottom">50dp</dimen>
 
     <dimen name="Spending_CardView_textview_font_size">30dp</dimen>

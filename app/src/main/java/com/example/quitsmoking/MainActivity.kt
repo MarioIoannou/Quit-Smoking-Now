@@ -70,8 +70,8 @@ class MainActivity : AppCompatActivity() {
             if (get(Calendar.HOUR_OF_DAY) >= 21) {
                 add(Calendar.DAY_OF_MONTH, 1)
             }
-            set(Calendar.HOUR_OF_DAY, 20)
-            set(Calendar.MINUTE, 27)
+            set(Calendar.HOUR_OF_DAY, 21)
+            set(Calendar.MINUTE, 0)
         }
 
         alarmManager.setRepeating(
@@ -134,7 +134,7 @@ class MainActivity : AppCompatActivity() {
         notificationManager.createNotificationChannel(channel)
     }
 
-    fun onStart(a :Int) {
+    /*fun onStart(a :Int) {
         super.onStart()
         if (a == 1) {
             if (a == 1){
@@ -143,7 +143,7 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent1)
             }
         }
-    }
+    }*/
 
     private fun setUpTabs(){
         val adapter = ViewPagerAdapter(supportFragmentManager)

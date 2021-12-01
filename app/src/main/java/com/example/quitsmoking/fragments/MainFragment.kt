@@ -22,6 +22,7 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.example.quitsmoking.*
 import com.example.quitsmoking.R
 import com.example.quitsmoking.data.Cigarette
@@ -61,9 +62,16 @@ class MainFragment : Fragment(), View.OnClickListener {
     val timekey = "timessmoked"
     var days = 1
 
-
-
-    private lateinit var dao: CigaretteDao
+    private val broadCastReceiver = object : BroadcastReceiver() {
+        override fun onReceive(contxt: Context?, intent: Intent?) {
+            Log.e("onReceive MainFragment","Triggered")
+            if (intent?.action == "MY_ACTION_MAIN"){
+                timesSmoked = intent.getIntExtra("Number",1)
+                println("The a has value $timesSmoked")
+                saveData("Tsigaro", timesSmoked)
+            }
+        }
+    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -72,6 +80,7 @@ class MainFragment : Fragment(), View.OnClickListener {
         savedInstanceState: Bundle?
     ): View {
         val view: View = inflater.inflate(R.layout.fragment_main, container, false)
+
         val cig_btn: ImageButton = view.findViewById(R.id.CigaretteButton)
         val sub_btn: Button = view.findViewById(R.id.subtractCig)
         val txt: TextView = view.findViewById(R.id.DidYouSmokeText)
@@ -79,14 +88,14 @@ class MainFragment : Fragment(), View.OnClickListener {
         days = loadData()
         val time:Long = Date().time
         println("Time $time")
-        if (days == 1) {
+        /*if (days == 1) {
             //transaction(days)
             val intent1 = Intent(activity, ResultActivity::class.java)
             intent1.putExtra("first", 1)
             startActivity(intent1)
             println("1st print: $days")
             days++
-        }
+        }*/
 
         cig_btn.setOnClickListener {
             txt.text = timesSmoked.toString()
@@ -143,6 +152,17 @@ class MainFragment : Fragment(), View.OnClickListener {
             }
         }
         return view
+    }
+
+    override fun onResume() {
+        super.onResume()
+        LocalBroadcastManager.getInstance(requireActivity()).registerReceiver(broadCastReceiver,
+            IntentFilter("MY_ACTION"))
+    }
+
+    override fun onPause() {
+        super.onPause()
+        LocalBroadcastManager.getInstance(requireActivity()).unregisterReceiver(broadCastReceiver)
     }
 
 //--------------- SharedPreferences -------------//

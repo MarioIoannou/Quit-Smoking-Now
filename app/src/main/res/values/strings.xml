@@ -62,7 +62,9 @@
     <string name="first_time_result_text">Here you can see your results, depending on your daily cigarette consumption.\n\nPlease wait, be patient and the app will notify you to see the results.</string>
 
    <!--//More-DAY-->
-    <string name="more_day_text" tools:ignore="StringEscaping">Your today's consumption is higher than yesterday's. You must lower your consumption, not to increase it. Please, consult the papers from <b>About</b> tab about daily consumption and if you have cravings use the timer from <b>Cravings</b> tab. From here on, try to lower your cigarette consumption for your own health.\n Here are the consequences:</string>
+    <string name="more_day_text">Your today\'s consumption is higher than yesterday\'s. You must lower your consumption, not to increase it.
+        Please, consult the papers from <b>About</b> tab about daily consumption and if you have cravings use the timer from <b>Cravings</b> tab.
+        From here on, try to lower your cigarette consumption for your own health.\n\n Here are the consequences:</string>
     <string name="more_day_bullet">&#8226; Higher chances for lung cancer<br/>\n&#8226; Higher chances damaging your Bronchus<br/>\n&#8226; Higher chances for ischemic heart diseases<br/></string>
 
         <!--//More-MONTH-->
@@ -70,7 +72,8 @@
 
     <!--//Less-DAY-->
     <string name="less_day_title"><b>CONGRATULATIONS</b></string>
-    <string name="less_day_text" tools:ignore="StringEscaping">Your today's consumption is less than yesterday's. This is one step of the many you will do to cut smoking. Please maintain lowering the consumption for you to achieve stopping smoking.\n Here you can see what are the consequences:</string>
+    <string name="less_day_text" >Your today\'s consumption is less than yesterday\'s.
+        This is one step of the many you will do to cut smoking. Please maintain lowering the consumption for you to achieve stopping smoking.\n\n Here you can see what are the consequences:</string>
     <string name="less_day_bullet">&#8226; Less chances for lung cancer<br/>\n&#8226; Less chances damaging your Bronchus<br/>\n&#8226; Less chances for ischemic heart diseases<br/></string>
 
         <!--//Less-MONTH-->
@@ -78,12 +81,14 @@
 
     <!--//more = LESS (EQUAL)-->
     <string name="more_equals_less_title"><b>CONGRATULATION</b></string>
-    <string name="more_equal_less_text" tools:ignore="StringEscaping">Your today's consumption is the same with yesterday's. Maintaining the same consumption doesn't mean that you will have less chances for health problems, you will have the same chances as yesterday, but these are still chances for something bad for your health in the future. From here on, please try lowering your cigarette consumption for your own health.</string>
+    <string name="more_equal_less_text">Your today\'s consumption is the same with yesterday\'s.
+        Maintaining the same consumption doesn\'t mean that you will have less chances for health problems, you will have the same chances as yesterday, but these are still chances for something bad for your health in the future.
+        From here on, please try lowering your cigarette consumption for your own health.</string>
     <string name="more_equals_less_bullet"> </string>
 
     <!--//NO_CONSUMPTION-->
     <string name="no_consumption_title"><b>CONGRATULATIONS</b></string>
-    <string name="no_consumption_text" tools:ignore="StringEscaping">Congratulations. You didn't smoke any cigarette. This is a major step for you and your health. Maintain it and in a short period of time you won't have to smoke. If you have tobacco cravings, please use the timer from <b>Cravings</b> tab.\n <b>Great job!</b> </string>
+    <string name="no_consumption_text" >Congratulations. You didn\'t smoke any cigarette. This is a major step for you and your health. Maintain it and in a short period of time you won\'t have to smoke. If you have tobacco cravings, please use the timer from <b>Cravings</b> tab.\n <b>Great job!</b> </string>
     <string name="no_consumption_bullet">&#8226; Much less chances for lung cancer<br/>\n&#8226; Much less chances damaging your Bronchus<br/>\n&#8226; Much less chances for ischemic heart diseases<br/></string>
 
 </resources>

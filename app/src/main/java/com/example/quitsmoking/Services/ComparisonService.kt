@@ -23,6 +23,8 @@ import kotlinx.coroutines.*
 @DelicateCoroutinesApi
 class ComparisonService: Service() {
 
+    private val MY_ACTION_MAIN = "MY_ACTION_MAIN"
+    private val MY_ACTION = "MY_ACTION"
     private val MY_ACTION_MORE = "MY_ACTION_MORE"
     private val MY_ACTION_LESS = "MY_ACTION_LESS"
     private val MY_ACTION_EQUAL = "MY_ACTION_EQUAL"
@@ -38,7 +40,7 @@ class ComparisonService: Service() {
     @SuppressLint("ObsoleteSdkInt")
     override fun onCreate() {
         super.onCreate()
-        Log.e("Service  onCreate","Service Started")
+        Log.e("Service  onCreate", "Service Started")
 
         if (Build.VERSION.SDK_INT >= 26) {
             val channel = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -62,43 +64,66 @@ class ComparisonService: Service() {
         val dbInstance = CigaretteDatabase.getDatabase(this)
         var todayCigarettes = 0
         var yesterdayCigarettes = 0
+        val intentmain = Intent()
         val intentdata = Intent()
-        sendBroadcast(intent)
         GlobalScope.launch {
             todayCigarettes = dbInstance.cigaretteDao().getTodayCigarettes()
             yesterdayCigarettes = dbInstance.cigaretteDao().getYesterdayCigarettes()
-            when {
-                yesterdayCigarettes > todayCigarettes -> {
-                    val consumption = yesterdayCigarettes - todayCigarettes
-                    intentdata.action =MY_ACTION_MORE
-                    intentdata.putExtra("MoreDifference", consumption)
-                    intentdata.putExtra("More", todayCigarettes)
-                    sendBroadcast(intentdata)
+            if (todayCigarettes > 1) {
+                when {
+                    todayCigarettes > yesterdayCigarettes -> {
+
+                        intentdata.action = MY_ACTION
+                        intentdata.putExtra("Number", 4)
+
+                       /* val consumption = yesterdayCigarettes - todayCigarettes
+                        intentdata.action = MY_ACTION_MORE
+                        intentdata.putExtra("MoreDifference", consumption)
+                        intentdata.putExtra("More", todayCigarettes)*/
+                        sendBroadcast(intentdata)
+                    }
+                    todayCigarettes < yesterdayCigarettes -> {
+
+                        intentdata.action = MY_ACTION
+                        intentdata.putExtra("Number", 2)
+
+                       /* val consumption = yesterdayCigarettes - todayCigarettes
+                        intentdata.action = MY_ACTION_LESS
+                        intentdata.putExtra("LessDifference", consumption)
+                        intentdata.putExtra("Less", todayCigarettes)*/
+                        sendBroadcast(intentdata)
+                    }
+                    else -> { // EQUAL \\
+
+                        intentdata.action = MY_ACTION
+                        intentdata.putExtra("Number", 3)
+
+                        /*val consumption = todayCigarettes
+                        intentdata.action = MY_ACTION_EQUAL
+                        intentdata.putExtra("EqualDifference", consumption)
+                        intentdata.putExtra("Equal", todayCigarettes)*/
+
+                        sendBroadcast(intentdata)
+                    }
                 }
-                yesterdayCigarettes == todayCigarettes -> {
-                    intentdata.action =MY_ACTION_EQUAL
-                    intentdata.putExtra("EqualDifference", 0)
-                    intentdata.putExtra("Equal", todayCigarettes)
-                    sendBroadcast(intentdata)
-                }
-                yesterdayCigarettes < todayCigarettes -> {
-                    val consumption = yesterdayCigarettes - todayCigarettes
-                    intentdata.action =MY_ACTION_LESS
-                    intentdata.putExtra("LessDifference", consumption)
-                    intentdata.putExtra("Less", todayCigarettes)
-                    sendBroadcast(intentdata)
-                }
-                else -> {
-                    val consumption = 0
-                    intentdata.action =MY_ACTION_NONE
-                    intentdata.putExtra("NoneDifference", consumption)
-                    sendBroadcast(intentdata)
-                }
+            } else {
+
+                intentdata.action = MY_ACTION
+                intentdata.putExtra("Number", 1)
+
+                /*val consumption = 0
+                intentdata.action = MY_ACTION_NONE
+                intentdata.putExtra("None", consumption)*/
+
+                sendBroadcast(intentdata)
             }
-            /*withContext(Dispatchers.Main) {
+        }
+        intentmain.action = MY_ACTION_MAIN
+        intentmain.putExtra("Main", 1)
+        sendBroadcast(intentmain)
+        /*withContext(Dispatchers.Main) {
                 Toast.makeText(this, result, Toast.LENGTH_SHORT).show()
             }*/
-        }
         val icon = BitmapFactory.decodeResource(resources, R.drawable.launcher_logo_2)
         val icon2 = BitmapFactory.decodeResource(resources, R.drawable.quitsmokingnowtext)
         val intentNot = Intent(this, MainActivity::class.java)
