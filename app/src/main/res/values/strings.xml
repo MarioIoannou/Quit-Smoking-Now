@@ -29,11 +29,11 @@
     <string name="help_message">This app will help you lower your cigarette consumption, even quit smoking, with the help of scientific papers from universities or online researches.\n
     \nFor you to have better results and the results that the app is giving, you must lower you consumption 50% and maintain it as long as you can.</string>
 
-    <string name="Spending_head_textview">Smoking cigarettes is expensive. Use our calculator to find out how much of your money is going up in smoke.</string>
+    <string name="Spending_head_textview">Smoking cigarettes is expensive. Use our calculator to find out how much money you spend in cigarettes.</string>
     <string name="Intro_String"><b>Welcome to Quit Smoking Now app.
         This app will help you lower your cigarette consumption, even quit smoking, with the help of specific scientific papers. </b></string>
-    <string name="string_university_of_peloponnese">Welcome\nThis is an bachelor\'s thesis app,\n created for University of Peloponnese</string>
-    <string name="this_app_will_help_you_lower">This app will help you lower your cigarette consumption, even quit smoking, with the help of scientific papers from universities, researches and researchers papers.\n \nFor you to have better results and the results that the app is giving, you must lower your consumption 50% and maintain it as long as you can.</string>
+    <string name="string_university_of_peloponnese">Welcome\nThis is a bachelor\'s thesis app,\n created for the University of Peloponnese</string>
+    <string name="this_app_will_help_you_lower">This app will help you lower your cigarette consumption and even quit smoking, with the help of scientific papers from universities, researches and researchers papers.\n \nTo have better results both to yourself and in the app, you must lower your consumption by 50% and maintain it as long as you can.</string>
     <string name="about">About</string>
     <string name="How_many_smoke_per_day">How many cigarettes do you smoke per day?</string>
     <string name="How_much_pay_per_pack">How much do you pay per pack?</string>
@@ -43,7 +43,7 @@
     <string name="did_you_accidentally_click_more_subtract_one">Did you accidentally click more? Subtract one.</string>
     <string name="subtraction">Subtraction</string>
     <string name="notification_channel_description">This is a channel description</string>
-    <string name="cravings_text">This is a cravings timer.\n This timer will you resist tobacco for\n 4 minutes\n when you have cravings.</string>
+    <string name="cravings_text">This is a cravings timer.\n This timer will help you resist smoking for\n 4 minutes\n when you have cravings.</string>
 
     <string name="begin">Begin</string>
     <string name="reset">Reset</string>
@@ -53,43 +53,49 @@
     <string name="add_widget">Add widget</string>
     <string name="app_widget_description">This is an app widget description</string>
 
-    <string name="introduction_1">This is the <b>Spending</b> tab. There you can calculate the how much you spending per day, week and month.</string>
+    <string name="introduction_1">This is the <b>Spending</b> tab. Here you can calculate how much you spend per day, week and month.</string>
     <string name="introduction_2">This is the <b>Cravings</b> tab. if you feel the need to smoke a cigarette, please don\'t, use apps craving tab.</string>
-    <string name="introduction_3">This is the <b>Home</b> tab. There you can click the cigarette when you smoke a cigarette.</string>
-    <string name="introduction_4">This is the <b>Result</b> tab. There you can see your daily results depending your daily consumption from Home Tab.</string>
-    <string name="introduction_5">This is the <b>About</b> tab. There you can see the links of the scientific papers with which the app is made.</string>
+    <string name="introduction_3">This is the <b>Home</b> tab. Here you can click the cigarette when you smoke a cigarette.</string>
+    <string name="introduction_4">This is the <b>Result</b> tab. Here you can see your daily results depending your daily consumption from Home Tab.</string>
+    <string name="introduction_5">This is the <b>About</b> tab. Here you can see the links of the scientific papers with which the app is made.</string>
 
-    <string name="first_time_result_text">Here you can see your results, depending on your daily cigarette consumption.\n\nPlease wait, be patient and the app will notify you to see the results.</string>
+    <string name="first_time_result_text">Here you can see your results, depending on your daily cigarette consumption.\n\nPlease wait, be patient and the app will notify you about the results.</string>
 
+    <string name="How_much_pay_per_pack_disclaimer">Please use full stop \".\", instead of comma \",\" . </string>
+    
    <!--//More-DAY-->
-    <string name="more_day_text">Your today\'s consumption is higher than yesterday\'s. You must lower your consumption, not to increase it.
-        Please, consult the papers from <b>About</b> tab about daily consumption and if you have cravings use the timer from <b>Cravings</b> tab.
-        From here on, try to lower your cigarette consumption for your own health.\n\n Here are the consequences:</string>
-    <string name="more_day_bullet">&#8226; Higher chances for lung cancer<br/>\n&#8226; Higher chances damaging your Bronchus<br/>\n&#8226; Higher chances for ischemic heart diseases<br/></string>
+    <string name="more_day_text">YYour today\’s consumption is higher than yesterdays. You have to make the decision, to stop smoking.
+        Please, consult the papers from <b>About</b> tab about daily consumption and the effects on health and if you have cravings use the timer from <b>Cravings</b> tab.
+        From here on out, try lowering your cigarette consumption. In-depth time, increasing consumption, depending on your health condition you will have:</string>
+    <string name="more_day_bullet">&#8226; 1.04–1.11 times having cancer in general from a non-smoker<br/>\n&#8226; 8.08–12.17 times having bronchus and lung cancer<br/>\n&#8226; 3.16–8.44 times having larynx cancer <br/>\n&#8226; 1.85–4.32 times having liver cancer <br/>
+    \n&#8226; 1.71–2.63 times having lip, oral cavity and pharynx cancer <br/>\n&#8226; 1.57–2.46 times having esophagus cancer <br/>\n&#8226; 1.34–2.49 times having pancreas  cancer <br/>\n&#8226; Higher chances for ischemic heart diseases <br/></string>
 
-        <!--//More-MONTH-->
+        <!--//More-WEEK-->
     <string name="more_week">Description</string>
 
     <!--//Less-DAY-->
     <string name="less_day_title"><b>CONGRATULATIONS</b></string>
-    <string name="less_day_text" >Your today\'s consumption is less than yesterday\'s.
-        This is one step of the many you will do to cut smoking. Please maintain lowering the consumption for you to achieve stopping smoking.\n\n Here you can see what are the consequences:</string>
-    <string name="less_day_bullet">&#8226; Less chances for lung cancer<br/>\n&#8226; Less chances damaging your Bronchus<br/>\n&#8226; Less chances for ischemic heart diseases<br/></string>
+    <string name="less_day_text" >Your today\'s consumption is less than yesterdays. This is a small step towards the goal. Please, try your best to reduce the amount of cigarettes you smoke or stop smoking. Also, ask your doctor for advice before doing everything, you can use treatments such as:</string>
+    <string name="less_day_bullet">&#8226; Skin patches which release nicotine slowly<br/>\n&#8226; Chewing gum<br/>\n&#8226; Inhalators, which look like plastic cigarettes<br/>\n
+        &#8226; Tablets<br/>\n&#8226; Mouth spray<br/></string>
 
-        <!--//Less-MONTH-->
+        <!--//Less-WEEK-->
     <string name="less_week">Description</string>
 
     <!--//more = LESS (EQUAL)-->
-    <string name="more_equals_less_title"><b>CONGRATULATION</b></string>
-    <string name="more_equal_less_text">Your today\'s consumption is the same with yesterday\'s.
-        Maintaining the same consumption doesn\'t mean that you will have less chances for health problems, you will have the same chances as yesterday, but these are still chances for something bad for your health in the future.
-        From here on, please try lowering your cigarette consumption for your own health.</string>
+    <string name="more_equals_less_title"><b>Same amount</b></string>
+    <string name="more_equal_less_text">Your today\'s consumption is the same with yesterdays.\n Your effort is not achievable enough to match with your goals. Smoking the same amount won\'t help you, so try harder.</string>
     <string name="more_equals_less_bullet"> </string>
 
     <!--//NO_CONSUMPTION-->
-    <string name="no_consumption_title"><b>CONGRATULATIONS</b></string>
-    <string name="no_consumption_text" >Congratulations. You didn\'t smoke any cigarette. This is a major step for you and your health. Maintain it and in a short period of time you won\'t have to smoke. If you have tobacco cravings, please use the timer from <b>Cravings</b> tab.\n <b>Great job!</b> </string>
-    <string name="no_consumption_bullet">&#8226; Much less chances for lung cancer<br/>\n&#8226; Much less chances damaging your Bronchus<br/>\n&#8226; Much less chances for ischemic heart diseases<br/></string>
+    <string name="no_consumption_title"><b>CONGRATULATIONS!</b></string>
+    <string name="no_consumption_text" >Congratulations. You didn\'t smoke any cigarettes today. This is a major step for you and your health. Maintain it and you won\'t have to smoke ever again.\n If you won\'t smoke for long enough:</string>
+    <string name="no_consumption_bullet">&#8226; After 20 minutes quitting smoking your blood pressure will drop to normal levels decreasing heart risks<br/>\n&#8226; You will notice that the food tastes better<br/>\n&#8226; Your breath, hair and clothes will smell better<br/>
+    \n&#8226; You will break an addiction cycle<br/>\n&#8226; You will improve your night vision and help preserve your overall vision by stopping the damage that smoking does to your eyes<br/>\n&#8226; Not smoking will keep your mouth healthy for years to come<br/>\n&#8226; You will prevent any type of cancer<br/></string>
 
+    <!--//FIRST_TIME-->
+    <string name="more_first_time_title"><b>First Time</b></string>
+    <string name="more_first_time_text" >This is your first time receiving results, you should better start fresh tomorrow.</string>
+    <string name="more_first_time_bullet"> </string>
 </resources>
 

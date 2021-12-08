@@ -28,13 +28,6 @@ private val notificationId = 1
 
 @DelicateCoroutinesApi
 class MainActivity : AppCompatActivity() {
-   /*lateinit var toggle: ActionBarDrawerToggle
-    var timesSmoked = 1*/
-
-    //Alarm
-    /*private var alarmManager: AlarmManager? = null
-    private lateinit var alarmIntent: PendingIntent
-    private var HOUR_TO_SHOW_PUSH = 21*/
 
     lateinit var mAdView : AdView
     private val adSize: AdSize
@@ -70,10 +63,9 @@ class MainActivity : AppCompatActivity() {
             if (get(Calendar.HOUR_OF_DAY) >= 21) {
                 add(Calendar.DAY_OF_MONTH, 1)
             }
-            set(Calendar.HOUR_OF_DAY, 21)
-            set(Calendar.MINUTE, 0)
+            set(Calendar.HOUR_OF_DAY, 20)
+            set(Calendar.MINUTE, 59)
         }
-
         alarmManager.setRepeating(
             AlarmManager.RTC_WAKEUP,
             calendar.timeInMillis,
@@ -82,44 +74,6 @@ class MainActivity : AppCompatActivity() {
         )
 
         //loadBannerAd()
-        /*val intent = Intent(this,MyService::class.java)
-        startService(intent)*/
-
-        /*var extra1 = intent.getIntExtra("first",1)
-        onStart(extra1)
-        println("extra1: $extra1")
-        if (extra1 == 1){
-            val intent1 = Intent(this, ResultActivity::class.java)
-            intent1.putExtra("First",extra1)
-            startActivity(intent1)
-        }
-        extra1 += 1*/
-
-    //Pass data
-        /*val extra1=intent.getStringExtra("varOne")
-        val extra2=intent.getStringExtra("varTwo")
-        val data = Bundle()
-        data.putString("data1",extra1)
-        data.putString("data2",extra2)
-        val settngs : SettingsFragment = SettingsFragment()*/
-
-    //Non fragment
-        /*addCigarette()
-        SubCigarette()
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        val scaledown1: Animation = AnimationUtils.loadAnimation(this, R.anim.scale_down)
-        val scaleup1 = AnimationUtils.loadAnimation(this, R.anim.scale_up)
-        settings_btn.setOnClickListener{
-            val mp1 = MediaPlayer.create(this, R.raw.button_click)
-            mp1?.start()
-            val intent = Intent(this, SettingsActivity::class.java)
-            intent.putExtra("varone",intent.getStringExtra("varOne"))
-            intent.putExtra("vartwo",intent.getStringExtra("varTwo"))
-            settings_btn.startAnimation(scaledown1)
-            settings_btn.startAnimation(scaleup1)
-            startActivity(intent)
-            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
-        }*/
     }
 
     private fun createNotificationChannel() {
@@ -133,17 +87,6 @@ class MainActivity : AppCompatActivity() {
             getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.createNotificationChannel(channel)
     }
-
-    /*fun onStart(a :Int) {
-        super.onStart()
-        if (a == 1) {
-            if (a == 1){
-                val intent1 = Intent(this, ResultActivity::class.java)
-                intent1.putExtra("First",a)
-                startActivity(intent1)
-            }
-        }
-    }*/
 
     private fun setUpTabs(){
         val adapter = ViewPagerAdapter(supportFragmentManager)

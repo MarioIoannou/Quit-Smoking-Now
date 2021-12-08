@@ -16,10 +16,11 @@ import com.google.android.gms.ads.*
 
 class SpendingFragment : Fragment() {
 
-    lateinit var mAdView : AdView
+    lateinit var mAdView: AdView
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View {
         val view: View = inflater.inflate(R.layout.fragment_spending, container, false)
         val PerDay: EditText = view.findViewById(R.id.HowManyPerDay)
         val PerPack: EditText = view.findViewById(R.id.HowMuchPerPack)
@@ -32,7 +33,9 @@ class SpendingFragment : Fragment() {
                     "Information are not provided.",
                     Toast.LENGTH_LONG
                 ).show()
-            } else if (PerDay.text.toString().toInt() > 60 && PerPack.text.toString().toFloat() > 10) {
+            } else if (PerDay.text.toString().toInt() > 60 && PerPack.text.toString()
+                    .toFloat() > 10
+            ) {
                 Toast.makeText(
                     activity?.baseContext,
                     "Number of cigarettes an pack price, aren't valid.",
@@ -44,20 +47,23 @@ class SpendingFragment : Fragment() {
                     "Cigarettes number, isn't valid.",
                     Toast.LENGTH_LONG
                 ).show()
-            } else if (PerDay.text.toString().toInt() > 70 || PerPack.text.toString().toFloat() <1) {
+            } else if (PerDay.text.toString().toInt() > 70 || PerPack.text.toString()
+                    .toFloat() < 1
+            ) {
                 Toast.makeText(
                     activity?.baseContext,
                     "Pack price, isn't a valid.",
                     Toast.LENGTH_LONG
                 ).show()
             } else {
-                val scaledown = AnimationUtils.loadAnimation(activity?.baseContext,
+                val scaledown = AnimationUtils.loadAnimation(
+                    activity?.baseContext,
                     R.anim.scale_down
                 )
                 val scaleup = AnimationUtils.loadAnimation(activity?.baseContext, R.anim.scale_up)
                 val intent = Intent(activity?.baseContext, CalculatorResultActivity::class.java)
-                intent.putExtra("Perday",PerDay.text.toString())
-                intent.putExtra("Perpack",PerPack.text.toString())
+                intent.putExtra("Perday", PerDay.text.toString())
+                intent.putExtra("Perpack", PerPack.text.toString())
                 btn_spend.startAnimation(scaledown)
                 btn_spend.startAnimation(scaleup)
                 startActivity(intent)

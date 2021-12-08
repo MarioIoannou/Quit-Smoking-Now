@@ -45,14 +45,6 @@ class MainFragment : Fragment(), View.OnClickListener {
     //AdMob
     lateinit var mAdView : AdView
 
-    //Alarm
-    private var HOUR_TO_SHOW_PUSH = 23
-    private var MINUTE_TO_SHOW_PUSH = 28
-
-    //Notification
-    private val CHANNEL_ID = "Channel ID"
-    private val notificationId = 1
-
     //General
     private var timesSmoked: Int = 1
     private var mNotified = false
@@ -61,17 +53,6 @@ class MainFragment : Fragment(), View.OnClickListener {
     val myPreferences = "mypref"
     val timekey = "timessmoked"
     var days = 1
-
-    private val broadCastReceiver = object : BroadcastReceiver() {
-        override fun onReceive(contxt: Context?, intent: Intent?) {
-            Log.e("onReceive MainFragment","Triggered")
-            if (intent?.action == "MY_ACTION_MAIN"){
-                timesSmoked = intent.getIntExtra("Number",1)
-                println("The a has value $timesSmoked")
-                saveData("Tsigaro", timesSmoked)
-            }
-        }
-    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -85,7 +66,6 @@ class MainFragment : Fragment(), View.OnClickListener {
         val sub_btn: Button = view.findViewById(R.id.subtractCig)
         val txt: TextView = view.findViewById(R.id.DidYouSmokeText)
         timesSmoked = loadData()
-        days = loadData()
         val time:Long = Date().time
         println("Time $time")
         /*if (days == 1) {
@@ -128,12 +108,6 @@ class MainFragment : Fragment(), View.OnClickListener {
             }
             saveData("Tsigaro", timesSmoked)
         }
-        /*val week = Calendar.getInstance(TimeZone.getTimeZone("UTC")).get(Calendar.WEEK_OF_YEAR)
-        println("Week : $week")*/
-
-        /*if (LocalTime.now() in LocalTime.of(21, 0, 0)..LocalTime.of(21, 0, 30)) {
-            sendNotification()
-        }*/
         saveData("Days", days)
         sub_btn.setOnClickListener {
             deleteCigaretteData()
@@ -156,13 +130,10 @@ class MainFragment : Fragment(), View.OnClickListener {
 
     override fun onResume() {
         super.onResume()
-        LocalBroadcastManager.getInstance(requireActivity()).registerReceiver(broadCastReceiver,
-            IntentFilter("MY_ACTION"))
     }
 
     override fun onPause() {
         super.onPause()
-        LocalBroadcastManager.getInstance(requireActivity()).unregisterReceiver(broadCastReceiver)
     }
 
 //--------------- SharedPreferences -------------//
@@ -205,28 +176,6 @@ class MainFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    /*fun schedulePushNotifications() {
-        val calendar = GregorianCalendar.getInstance().apply {
-            if (get(Calendar.HOUR_OF_DAY) >= HOUR_TO_SHOW_PUSH) {
-                add(Calendar.DAY_OF_MONTH, 1)
-            }
-
-            set(Calendar.HOUR_OF_DAY, HOUR_TO_SHOW_PUSH)
-            set(Calendar.MINUTE, 0)
-            //set(Calendar.MINUTE, MINUTE_TO_SHOW_PUSH)
-            set(Calendar.SECOND, 0)
-            set(Calendar.MILLISECOND, 0)
-        }
-
-        alarmManager?.setRepeating(
-            AlarmManager.RTC_WAKEUP,
-            calendar.timeInMillis,
-            AlarmManager.INTERVAL_DAY,
-            alarmIntent
-        )
-        Log.e("PushNotifications","Broadcast Sent")
-    }*/
-
     //----------------- It works AppWidget --------------------------------------------------
 
     /*private fun initReceiver() {
@@ -245,61 +194,6 @@ class MainFragment : Fragment(), View.OnClickListener {
     }*/
 
     //------------------------------------------------------------------------------
-
-    private fun createNotificationChannel() {
-        val name = "Notification Title"
-        val descriptionText = "Notification Description"
-        val importance = NotificationManager.IMPORTANCE_DEFAULT
-        val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
-            description = descriptionText
-        }
-        val notificationManager: NotificationManager =
-            activity?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        notificationManager.createNotificationChannel(channel)
-    }
-    //.setStyle(NotificationCompat.BigPictureStyle().bigPicture(icon))
-
-    /* @RequiresApi(Build.VERSION_CODES.O)
-     private fun onTimeSet(hourOfDay : Int, minutes: Int){
-         val cal : Calendar = Calendar.getInstance()
-         cal.set(Calendar.HOUR_OF_DAY,hourOfDay)
-         cal.set(Calendar.MINUTE,minutes)
-         cal.set(Calendar.SECOND,0)
-         //startAlarm()
-     }
-
-     @RequiresApi(Build.VERSION_CODES.O)
-     private fun startAlarm(cal : Calendar) {
-         alarmManager= activity?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-         val intent = Intent(requireContext(),AlertReceiver::class.java)
-         pendingIntent = PendingIntent.getBroadcast(requireContext(),0,intent,0)
-         alarmManager.setExact(AlarmManager.RTC_WAKEUP,cal.timeInMillis,pendingIntent)
-     }*/
-
-    private fun sendNotification() {
-        val icon = BitmapFactory.decodeResource(resources, R.drawable.launcher_logo_2)
-        val icon2 = BitmapFactory.decodeResource(resources, R.drawable.quitsmokingnowtext)
-        val intent = Intent(requireContext(), MainActivity::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        }
-        val pendingIntent: PendingIntent = PendingIntent.getActivity(requireContext(), 0, intent, 0)
-        val builder = NotificationCompat.Builder(requireContext(), CHANNEL_ID)
-            .setSmallIcon(R.drawable.launcher_logo_2)
-            .setContentTitle("Quit Smoking Now")
-            .setContentText("The results are ready for you to see. Please view them!")
-            .setLargeIcon(icon)
-            .setContentIntent(pendingIntent)
-            .setStyle(NotificationCompat.BigPictureStyle().bigPicture(icon2))
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-
-        with(NotificationManagerCompat.from(requireContext())) {
-            notify(notificationId, builder.build())
-        }
-    }
-
-    /*fun clearData(view: View){
-        DidYouSmokeText.text = ""
-    }*/
 
     /*private fun loadBannerAd(){
         MobileAds.initialize(requireContext()) {}

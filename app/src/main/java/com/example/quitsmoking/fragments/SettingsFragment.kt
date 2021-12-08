@@ -39,11 +39,14 @@ class SettingsFragment : Fragment() {
         return true
     }*/
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view: View = inflater!!.inflate(R.layout.fragment_settings, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_settings, container, false)
         //adViewAbout.addView(adView)
-        val Link1: TextView? = view.findViewById(R.id.link1)
-        val Link2: TextView? = view.findViewById(R.id.link2)
-        val Link3: TextView? = view.findViewById(R.id.link3)
+        val Link1: TextView? = view.findViewById(R.id.Paper_1)
+        val Link2: TextView? = view.findViewById(R.id.Paper_2)
+        val Link3: TextView? = view.findViewById(R.id.Paper_3)
+        val Link4: TextView? = view.findViewById(R.id.Paper_4)
+        val Link5: TextView? = view.findViewById(R.id.Paper_5)
+        val Link6: TextView? = view.findViewById(R.id.Paper_6)
         if (Link1 != null) {
             Link1.movementMethod = LinkMovementMethod.getInstance()
         }
@@ -52,6 +55,15 @@ class SettingsFragment : Fragment() {
         }
         if (Link3 != null) {
             Link3.movementMethod = LinkMovementMethod.getInstance()
+        }
+        if (Link4 != null) {
+            Link4.movementMethod = LinkMovementMethod.getInstance()
+        }
+        if (Link5 != null) {
+            Link5.movementMethod = LinkMovementMethod.getInstance()
+        }
+        if (Link6 != null) {
+            Link6.movementMethod = LinkMovementMethod.getInstance()
         }
         return view
     }

@@ -1,11 +1,10 @@
 package com.example.quitsmoking.Services
 
 import android.annotation.SuppressLint
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
-import android.app.Service
+import android.app.*
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.BitmapFactory
 import android.os.Build
 import android.os.IBinder
@@ -31,6 +30,7 @@ class ComparisonService: Service() {
     private val MY_ACTION_NONE = "MY_ACTION_NONE"
     private val CHANNEL_ID = "Channel ID"
     private val notificationId = 1
+    private var day = 1
 
     override fun onBind(intent: Intent): IBinder? {
         //throw UnsupportedOperationException("Not yet implemented")
@@ -58,72 +58,59 @@ class ComparisonService: Service() {
         }
     }
 
+    private fun saveData(key: String, value: Int, context: Context) {
+        val sharedPreferences: SharedPreferences =
+            context.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val editor: SharedPreferences.Editor = sharedPreferences.edit()
+        editor.apply {
+            putInt(key, value)
+        }.apply()
+    }
+
+    private fun loadData(): Int {
+        val sharedPreferences: SharedPreferences =
+            this.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val savedString = sharedPreferences.getInt("Day", 1)
+        return savedString
+    }
+
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
-        //createNotificationChannel()
-        //sendNotification()
         val dbInstance = CigaretteDatabase.getDatabase(this)
         var todayCigarettes = 0
         var yesterdayCigarettes = 0
-        val intentmain = Intent()
-        val intentdata = Intent()
+        day = loadData()
         GlobalScope.launch {
             todayCigarettes = dbInstance.cigaretteDao().getTodayCigarettes()
             yesterdayCigarettes = dbInstance.cigaretteDao().getYesterdayCigarettes()
             if (todayCigarettes > 1) {
                 when {
                     todayCigarettes > yesterdayCigarettes -> {
-
-                        intentdata.action = MY_ACTION
-                        intentdata.putExtra("Number", 4)
-
-                       /* val consumption = yesterdayCigarettes - todayCigarettes
-                        intentdata.action = MY_ACTION_MORE
-                        intentdata.putExtra("MoreDifference", consumption)
-                        intentdata.putExtra("More", todayCigarettes)*/
-                        sendBroadcast(intentdata)
+                        if (day > 1) {
+                            saveData("Number", 4, applicationContext)
+                        }else{
+                            saveData("Number", 5, applicationContext)
+                            day = 2
+                            saveData("Day", day, applicationContext)
+                        }
                     }
                     todayCigarettes < yesterdayCigarettes -> {
 
-                        intentdata.action = MY_ACTION
-                        intentdata.putExtra("Number", 2)
+                        saveData("Number",2,applicationContext)
 
-                       /* val consumption = yesterdayCigarettes - todayCigarettes
-                        intentdata.action = MY_ACTION_LESS
-                        intentdata.putExtra("LessDifference", consumption)
-                        intentdata.putExtra("Less", todayCigarettes)*/
-                        sendBroadcast(intentdata)
                     }
                     else -> { // EQUAL \\
 
-                        intentdata.action = MY_ACTION
-                        intentdata.putExtra("Number", 3)
+                        saveData("Number",3,applicationContext)
 
-                        /*val consumption = todayCigarettes
-                        intentdata.action = MY_ACTION_EQUAL
-                        intentdata.putExtra("EqualDifference", consumption)
-                        intentdata.putExtra("Equal", todayCigarettes)*/
-
-                        sendBroadcast(intentdata)
                     }
                 }
             } else {
 
-                intentdata.action = MY_ACTION
-                intentdata.putExtra("Number", 1)
+                saveData("Number",1,applicationContext)
 
-                /*val consumption = 0
-                intentdata.action = MY_ACTION_NONE
-                intentdata.putExtra("None", consumption)*/
-
-                sendBroadcast(intentdata)
             }
         }
-        intentmain.action = MY_ACTION_MAIN
-        intentmain.putExtra("Main", 1)
-        sendBroadcast(intentmain)
-        /*withContext(Dispatchers.Main) {
-                Toast.makeText(this, result, Toast.LENGTH_SHORT).show()
-            }*/
+        saveData("Tsigaro", 1,applicationContext)
         val icon = BitmapFactory.decodeResource(resources, R.drawable.launcher_logo_2)
         val icon2 = BitmapFactory.decodeResource(resources, R.drawable.quitsmokingnowtext)
         val intentNot = Intent(this, MainActivity::class.java)

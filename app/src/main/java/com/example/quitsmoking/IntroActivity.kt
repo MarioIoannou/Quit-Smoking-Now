@@ -16,6 +16,7 @@ import android.view.WindowManager
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.core.view.WindowCompat
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import kotlinx.android.synthetic.main.activity_intro.*
@@ -39,36 +40,33 @@ class IntroActivity : AppCompatActivity() {
             launchHomeScreen()
             finish()
         }
+        supportActionBar?.elevation = 0F
         // Making notification bar transparent
         /*if (Build.VERSION.SDK_INT >= 21) {
             window.setDecorFitsSystemWindows(false)
         } else {
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
         }*/
-        //Set layout
         setContentView(R.layout.activity_intro)
 
         dotsLayout = findViewById<LinearLayout>(R.id.layoutDots)
-        // layouts of all intro sliders
         layouts = intArrayOf(R.layout.slider1, R.layout.slider2,R.layout.slider3)
 
-        // adding bottom dots
         addBottomDots(0)
 
-        // making notification bar transparent
         changeStatusBarColor()
         if (Build.VERSION.SDK_INT >= 21) {
             window.decorView.systemUiVisibility =
                 SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
         }
+       /* WindowCompat.setDecorFitsSystemWindows(window, false)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        actionBar?.hide()*/
         myViewPagerAdapter = MyViewPagerAdapter()
         view_pager!!.adapter = myViewPagerAdapter
         view_pager!!.addOnPageChangeListener(viewPagerPageChangeListener)
 
-        //btn_skip!!.setOnClickListener { launchHomeScreen() }
-
         btn_next!!.setOnClickListener{
-            // checking for last page & if last page home screen will be launched
             val current = getItem(+1)
             if (current < layouts!!.size) {
                 // move to next screen
@@ -105,20 +103,14 @@ class IntroActivity : AppCompatActivity() {
         finish()
     }
 
-    //	viewpager change listener
     private var viewPagerPageChangeListener: ViewPager.OnPageChangeListener = object : ViewPager.OnPageChangeListener {
 
         override fun onPageSelected(position: Int) {
             addBottomDots(position)
-            // changing the next button text 'NEXT' / 'GOT IT'
             if (position == layouts!!.size - 1) {
-                // last page. make button text to GOT IT
                 btn_next!!.text = getString(R.string.start)
-                //btn_skip!!.visibility = View.GONE
             } else {
-                // still pages are left
                 btn_next!!.text = getString(R.string.next)
-                //btn_skip!!.visibility = View.VISIBLE
             }
         }
 
@@ -138,9 +130,6 @@ class IntroActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * View pager adapter
-     */
     inner class MyViewPagerAdapter : PagerAdapter() {
         private var layoutInflater: LayoutInflater? = null
 

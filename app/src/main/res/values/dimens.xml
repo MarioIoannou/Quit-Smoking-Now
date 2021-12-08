@@ -85,7 +85,7 @@
     <dimen name="Spending_EditText_marginStart">10dp</dimen>
     <dimen name="Spending_EditText_marginEnd">10dp</dimen>
     <dimen name="Spending_EditText_marginTop">5dp</dimen>
-    <dimen name="Spending_EditText_marginBottom">50dp</dimen>
+    <dimen name="Spending_EditText_marginBottom">20dp</dimen>
     <!--CalcResultActivity-->
     <dimen name="CalcResultActivity_CardView_marginStart">30dp</dimen>
     <dimen name="CalcResultActivity_CardView_marginEnd">30dp</dimen>

@@ -1,9 +1,6 @@
 package com.example.quitsmoking.fragments
 
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
+import android.content.*
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -17,31 +14,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.example.quitsmoking.R
 
 class ResultFragment : Fragment() {
-    var a: Int = 0
-    private val broadCastReceiver = object : BroadcastReceiver() {
-        override fun onReceive(contxt: Context?, intent: Intent?) {
-            Log.e("onReceive Fragment","Triggered")
-            if (intent?.action == "MY_ACTION"){
-                a = intent.getIntExtra("Number",0)
-                println("The a has value $a")
-            }
-           /* when (intent?.action) {
-                "MY_ACTION_NONE" -> {
-                    a = 1
-                }
-                "MY_ACTION_LESS" -> {
-                    a = 2
-                }
-                "MY_ACTION_EQUAL" -> {
-                    a = 3
-                }
-                "MY_ACTION_MORE" -> {
-                    a = 4
-                }
-                else -> Log.e("NO Receive","Nothing received")
-            }*/
-        }
-    }
+    var Num: Int = 0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -49,8 +22,9 @@ class ResultFragment : Fragment() {
         val txtTilte: TextView = view.findViewById(R.id.ResultTextTitle)
         val txt: TextView = view.findViewById(R.id.ResultText)
         val txtbullet: TextView = view.findViewById(R.id.ResultBullet)
-        if(a == 1){
-            Log.e("No consumption","Triggered")
+        Num = loadData()
+        if (Num == 1) {
+            Log.e("No consumption", "Triggered")
             txtTilte.text = getString(R.string.no_consumption_title)
             txt.text = getString(R.string.no_consumption_text)
             txt.textSize = 15F
@@ -61,8 +35,8 @@ class ResultFragment : Fragment() {
             txtbullet.setTextColor(Color.BLACK)
             txtbullet.gravity = Gravity.START
         }
-        if(a == 2){
-            Log.e("Less","Triggered")
+        if (Num == 2) {
+            Log.e("Less", "Triggered")
             txtTilte.text = getString(R.string.less_day_title)
             txt.text = getString(R.string.less_day_text)
             txt.textSize = 15F
@@ -73,8 +47,8 @@ class ResultFragment : Fragment() {
             txtbullet.setTextColor(Color.BLACK)
             txtbullet.gravity = Gravity.START
         }
-        if(a == 3){
-            Log.e("Equal","Triggered")
+        if (Num == 3) {
+            Log.e("Equal", "Triggered")
             txtTilte.text = getString(R.string.more_equals_less_title)
             txt.text = getString(R.string.more_equal_less_text)
             txt.textSize = 15F
@@ -85,9 +59,9 @@ class ResultFragment : Fragment() {
             txtbullet.setTextColor(Color.BLACK)
             txtbullet.gravity = Gravity.START
         }
-        if(a == 4){
-            Log.e("More","Triggered")
-            txtTilte.setCompoundDrawablesWithIntrinsicBounds(R.drawable.angry_doctor_small,0,0,0)
+        if (Num == 4) {
+            Log.e("More", "Triggered")
+            txtTilte.setCompoundDrawablesWithIntrinsicBounds(R.drawable.angry_doctor_small, 0, 0, 0)
             txtTilte.text = " "
             txt.text = getString(R.string.more_day_text)
             txt.textSize = 15F
@@ -98,18 +72,34 @@ class ResultFragment : Fragment() {
             txtbullet.setTextColor(Color.BLACK)
             txtbullet.gravity = Gravity.START
         }
+        if (Num == 5) {
+            Log.e("More - First Time", "Triggered")
+            txtTilte.text = getString(R.string.more_first_time_title)
+            txt.text = getString(R.string.more_first_time_text)
+            txt.textSize = 15F
+            txt.setTextColor(Color.BLACK)
+            txt.gravity = Gravity.CENTER
+            txtbullet.text = getString(R.string.more_first_time_bullet)
+            txtbullet.textSize = 15F
+            txtbullet.setTextColor(Color.BLACK)
+            txtbullet.gravity = Gravity.START
+        }
         return view
+    }
+
+    private fun loadData(): Int {
+        val sharedPreferences: SharedPreferences =
+            requireActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val savedString = sharedPreferences.getInt("Number", -1)
+        return savedString
     }
 
     override fun onResume() {
         super.onResume()
-        LocalBroadcastManager.getInstance(requireActivity()).registerReceiver(broadCastReceiver,
-            IntentFilter("MY_ACTION"))
     }
 
     override fun onPause() {
         super.onPause()
-        LocalBroadcastManager.getInstance(requireActivity()).unregisterReceiver(broadCastReceiver)
     }
 
 }
