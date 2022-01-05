@@ -140,7 +140,7 @@ class MainFragment : Fragment(), View.OnClickListener {
 
     private fun saveData(key: String, value: Int) {
         val sharedPreferences: SharedPreferences =
-            requireActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+            requireActivity().getSharedPreferences("sharedPrefsSmoke", Context.MODE_PRIVATE)
         val editor: SharedPreferences.Editor = sharedPreferences.edit()
         editor.apply {
             putInt(key, value)
@@ -149,7 +149,7 @@ class MainFragment : Fragment(), View.OnClickListener {
 
     private fun loadData(): Int {
         val sharedPreferences: SharedPreferences =
-            requireActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+            requireActivity().getSharedPreferences("sharedPrefsSmoke", Context.MODE_PRIVATE)
         val savedString = sharedPreferences.getInt("Tsigaro", 1)
         return savedString
     }

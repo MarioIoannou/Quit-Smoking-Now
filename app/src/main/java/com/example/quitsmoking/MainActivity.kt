@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
                 add(Calendar.DAY_OF_MONTH, 1)
             }
             set(Calendar.HOUR_OF_DAY, 20)
-            set(Calendar.MINUTE, 59)
+            set(Calendar.MINUTE,59)
         }
         alarmManager.setRepeating(
             AlarmManager.RTC_WAKEUP,

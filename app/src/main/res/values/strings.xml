@@ -64,7 +64,7 @@
     <string name="How_much_pay_per_pack_disclaimer">Please use full stop \".\", instead of comma \",\" . </string>
     
    <!--//More-DAY-->
-    <string name="more_day_text">YYour today\’s consumption is higher than yesterdays. You have to make the decision, to stop smoking.
+    <string name="more_day_text">Your today\’s consumption is higher than yesterdays. You have to make the decision, to stop smoking.
         Please, consult the papers from <b>About</b> tab about daily consumption and the effects on health and if you have cravings use the timer from <b>Cravings</b> tab.
         From here on out, try lowering your cigarette consumption. In-depth time, increasing consumption, depending on your health condition you will have:</string>
     <string name="more_day_bullet">&#8226; 1.04–1.11 times having cancer in general from a non-smoker<br/>\n&#8226; 8.08–12.17 times having bronchus and lung cancer<br/>\n&#8226; 3.16–8.44 times having larynx cancer <br/>\n&#8226; 1.85–4.32 times having liver cancer <br/>

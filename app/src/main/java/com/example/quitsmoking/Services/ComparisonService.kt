@@ -20,7 +20,7 @@ import com.example.quitsmoking.fragments.ResultFragment
 import kotlinx.coroutines.*
 
 @DelicateCoroutinesApi
-class ComparisonService: Service() {
+class ComparisonService : Service() {
 
     private val MY_ACTION_MAIN = "MY_ACTION_MAIN"
     private val MY_ACTION = "MY_ACTION"
@@ -58,76 +58,98 @@ class ComparisonService: Service() {
         }
     }
 
-    private fun saveData(key: String, value: Int, context: Context) {
+    private fun saveSmokeData(key: String, value: Int, context: Context) {
         val sharedPreferences: SharedPreferences =
-            context.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+            context.getSharedPreferences("sharedPrefsSmoke", Context.MODE_PRIVATE)
         val editor: SharedPreferences.Editor = sharedPreferences.edit()
         editor.apply {
             putInt(key, value)
         }.apply()
     }
 
-    private fun loadData(): Int {
+    private fun saveDataDay(key: String, value: Int, context: Context) {
         val sharedPreferences: SharedPreferences =
-            this.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
-        val savedString = sharedPreferences.getInt("Day", 1)
-        return savedString
+            context.getSharedPreferences("sharedPrefsDay", Context.MODE_PRIVATE)
+        val editor: SharedPreferences.Editor = sharedPreferences.edit()
+        editor.apply {
+            putInt(key, value)
+        }.apply()
     }
 
+    private fun loadDataDay(): Int {
+        val sharedPreferences: SharedPreferences =
+            this.getSharedPreferences("sharedPrefsDay", Context.MODE_PRIVATE)
+        val savedDayString = sharedPreferences.getInt("Day", 1)
+        return savedDayString
+    }
+
+    private fun saveData(key: String, value: String, context: Context) {
+        val sharedPreferences: SharedPreferences =
+            context.getSharedPreferences("sharedPrefsData", Context.MODE_PRIVATE)
+        val editor: SharedPreferences.Editor = sharedPreferences.edit()
+        editor.apply {
+            putString(key, value)
+        }.apply()
+    }
+
+    /*private fun loadData(): String? {
+        val sharedPreferences: SharedPreferences =
+            this.getSharedPreferences("sharedPrefsData", Context.MODE_PRIVATE)
+        val savedString = sharedPreferences.getString("Day", null)
+        return savedString
+    }*/
+
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
+        Log.e("Service  onCreate", "onStartCommand Started")
         val dbInstance = CigaretteDatabase.getDatabase(this)
         var todayCigarettes = 0
         var yesterdayCigarettes = 0
-        day = loadData()
+        day = loadDataDay()
         GlobalScope.launch {
             todayCigarettes = dbInstance.cigaretteDao().getTodayCigarettes()
             yesterdayCigarettes = dbInstance.cigaretteDao().getYesterdayCigarettes()
-            if (todayCigarettes > 1) {
-                when {
-                    todayCigarettes > yesterdayCigarettes -> {
-                        if (day > 1) {
-                            saveData("Number", 4, applicationContext)
-                        }else{
-                            saveData("Number", 5, applicationContext)
-                            day = 2
-                            saveData("Day", day, applicationContext)
-                        }
-                    }
-                    todayCigarettes < yesterdayCigarettes -> {
-
-                        saveData("Number",2,applicationContext)
-
-                    }
-                    else -> { // EQUAL \\
-
-                        saveData("Number",3,applicationContext)
-
+            when {
+                todayCigarettes > yesterdayCigarettes -> {
+                    if (day > 1) {
+                        saveData("Number", "More", applicationContext)
+                    } else {
+                        saveData("Number", "FirstTimer", applicationContext)
+                        day = 2
+                        saveDataDay("Day", day, applicationContext)
                     }
                 }
-            } else {
-
-                saveData("Number",1,applicationContext)
-
+                todayCigarettes < yesterdayCigarettes -> {
+                    saveData("Number", "Less", applicationContext)
+                }
+                todayCigarettes == yesterdayCigarettes -> {
+                    saveData("Number", "Equal", applicationContext)
+                }
+                todayCigarettes == 0 -> {
+                    saveData("Number", "None", applicationContext)
+                }
             }
         }
-        saveData("Tsigaro", 1,applicationContext)
-        val icon = BitmapFactory.decodeResource(resources, R.drawable.launcher_logo_2)
-        val icon2 = BitmapFactory.decodeResource(resources, R.drawable.quitsmokingnowtext)
-        val intentNot = Intent(this, MainActivity::class.java)
-        val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intentNot, 0)
-        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
-            .setSmallIcon(R.drawable.launcher_logo_2)
-            .setContentTitle("Quit Smoking Now")
-            .setContentText("The results are ready for you to see. Please view them!")
-            .setLargeIcon(icon)
-            .setContentIntent(pendingIntent)
-            .setStyle(NotificationCompat.BigPictureStyle().bigPicture(icon2))
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-            .setAutoCancel(true)
 
-        with(NotificationManagerCompat.from(this)) {
-            notify(notificationId, builder.build())
-        }
-        return START_NOT_STICKY
+
+    saveSmokeData("Tsigaro", 1, applicationContext)
+    val icon = BitmapFactory.decodeResource(resources, R.drawable.launcher_logo_2)
+    val icon2 = BitmapFactory.decodeResource(resources, R.drawable.quitsmokingnowtext)
+    val intentNot = Intent(this, MainActivity::class.java)
+    val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intentNot, 0)
+    val builder = NotificationCompat.Builder(this, CHANNEL_ID)
+        .setSmallIcon(R.drawable.launcher_logo_2)
+        .setContentTitle("Quit Smoking Now")
+        .setContentText("The results are ready for you to see. Please view them!")
+        .setLargeIcon(icon)
+        .setContentIntent(pendingIntent)
+        .setStyle(NotificationCompat.BigPictureStyle().bigPicture(icon2))
+        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+        .setAutoCancel(true)
+
+    with(NotificationManagerCompat.from(this))
+    {
+        notify(notificationId, builder.build())
     }
+    return START_NOT_STICKY
+}
 }

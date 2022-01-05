@@ -2,7 +2,6 @@ package com.example.quitsmoking.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,13 +9,14 @@ import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.example.quitsmoking.CalculatorResultActivity
 import com.example.quitsmoking.R
 import com.google.android.gms.ads.*
 
 class SpendingFragment : Fragment() {
 
-    lateinit var mAdView: AdView
+    //lateinit var mAdView: AdView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?

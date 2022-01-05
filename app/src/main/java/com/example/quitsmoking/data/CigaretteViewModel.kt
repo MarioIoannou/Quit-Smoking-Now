@@ -8,7 +8,7 @@ import com.example.quitsmoking.fragments.MainFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class CigaretteViewModel(application: Application): AndroidViewModel(application) {
+class   CigaretteViewModel(application: Application): AndroidViewModel(application) {
 
     /*private val readAllData: LiveData<List<Cigarette>>
     private val repository: CigaretteRepository

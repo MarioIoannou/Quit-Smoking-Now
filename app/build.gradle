@@ -65,12 +65,12 @@ dependencies {
     }
 
     // Room components
-    implementation "androidx.room:room-runtime:2.3.0"
+    implementation "androidx.room:room-runtime:2.4.0"
     implementation 'com.google.firebase:protolite-well-known-types:18.0.0'
     //implementation "androidx.room:room-coroutines:${versions.room}"
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0")
-    kapt "androidx.room:room-compiler:2.3.0"
-    implementation "androidx.room:room-ktx:2.3.0"
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
+    kapt "androidx.room:room-compiler:2.4.0"
+    implementation "androidx.room:room-ktx:2.4.0"
     //androidTestImplementation "androidx.room:room-testing:2.3.0"
 
     // Lifecycle components
@@ -79,10 +79,12 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0"
 
     // Kotlin components
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.6.0"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.5.31"
-    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0"
-    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.6.10"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.10"
+
+    //Coroutine
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2"
 
     //JetPack Lifecycle
     /*implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.3.1"
@@ -105,7 +107,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.0'
-    implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.preference:preference-ktx:1.1.1'

@@ -14,7 +14,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.example.quitsmoking.R
 
 class ResultFragment : Fragment() {
-    var Num: Int = 0
+    lateinit var Num: String
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -22,75 +22,78 @@ class ResultFragment : Fragment() {
         val txtTilte: TextView = view.findViewById(R.id.ResultTextTitle)
         val txt: TextView = view.findViewById(R.id.ResultText)
         val txtbullet: TextView = view.findViewById(R.id.ResultBullet)
-        Num = loadData()
-        if (Num == 1) {
-            Log.e("No consumption", "Triggered")
-            txtTilte.text = getString(R.string.no_consumption_title)
-            txt.text = getString(R.string.no_consumption_text)
-            txt.textSize = 15F
-            txt.setTextColor(Color.BLACK)
-            txt.gravity = Gravity.CENTER
-            txtbullet.text = getString(R.string.no_consumption_bullet)
-            txtbullet.textSize = 15F
-            txtbullet.setTextColor(Color.BLACK)
-            txtbullet.gravity = Gravity.START
-        }
-        if (Num == 2) {
-            Log.e("Less", "Triggered")
-            txtTilte.text = getString(R.string.less_day_title)
-            txt.text = getString(R.string.less_day_text)
-            txt.textSize = 15F
-            txt.setTextColor(Color.BLACK)
-            txt.gravity = Gravity.CENTER
-            txtbullet.text = getString(R.string.less_day_bullet)
-            txtbullet.textSize = 15F
-            txtbullet.setTextColor(Color.BLACK)
-            txtbullet.gravity = Gravity.START
-        }
-        if (Num == 3) {
-            Log.e("Equal", "Triggered")
-            txtTilte.text = getString(R.string.more_equals_less_title)
-            txt.text = getString(R.string.more_equal_less_text)
-            txt.textSize = 15F
-            txt.setTextColor(Color.BLACK)
-            txt.gravity = Gravity.CENTER
-            txtbullet.text = getString(R.string.more_equals_less_bullet)
-            txtbullet.textSize = 15F
-            txtbullet.setTextColor(Color.BLACK)
-            txtbullet.gravity = Gravity.START
-        }
-        if (Num == 4) {
-            Log.e("More", "Triggered")
-            txtTilte.setCompoundDrawablesWithIntrinsicBounds(R.drawable.angry_doctor_small, 0, 0, 0)
-            txtTilte.text = " "
-            txt.text = getString(R.string.more_day_text)
-            txt.textSize = 15F
-            txt.setTextColor(Color.BLACK)
-            txt.gravity = Gravity.CENTER
-            txtbullet.text = getString(R.string.more_day_bullet)
-            txtbullet.textSize = 15F
-            txtbullet.setTextColor(Color.BLACK)
-            txtbullet.gravity = Gravity.START
-        }
-        if (Num == 5) {
-            Log.e("More - First Time", "Triggered")
-            txtTilte.text = getString(R.string.more_first_time_title)
-            txt.text = getString(R.string.more_first_time_text)
-            txt.textSize = 15F
-            txt.setTextColor(Color.BLACK)
-            txt.gravity = Gravity.CENTER
-            txtbullet.text = getString(R.string.more_first_time_bullet)
-            txtbullet.textSize = 15F
-            txtbullet.setTextColor(Color.BLACK)
-            txtbullet.gravity = Gravity.START
+        Num = loadData().toString()
+        //Num = ""
+        when (Num) {
+            "None" -> {
+                Log.e("No consumption", "Triggered")
+                txtTilte.text = getString(R.string.no_consumption_title)
+                txt.text = getString(R.string.no_consumption_text)
+                txt.textSize = 15F
+                txt.setTextColor(Color.BLACK)
+                txt.gravity = Gravity.CENTER
+                txtbullet.text = getString(R.string.no_consumption_bullet)
+                txtbullet.textSize = 15F
+                txtbullet.setTextColor(Color.BLACK)
+                txtbullet.gravity = Gravity.START
+            }
+            "Less" -> {
+                Log.e("Less", "Triggered")
+                txtTilte.text = getString(R.string.less_day_title)
+                txt.text = getString(R.string.less_day_text)
+                txt.textSize = 15F
+                txt.setTextColor(Color.BLACK)
+                txt.gravity = Gravity.CENTER
+                txtbullet.text = getString(R.string.less_day_bullet)
+                txtbullet.textSize = 15F
+                txtbullet.setTextColor(Color.BLACK)
+                txtbullet.gravity = Gravity.START
+            }
+            "Equal" -> {
+                Log.e("Equal", "Triggered")
+                txtTilte.text = getString(R.string.more_equals_less_title)
+                txt.text = getString(R.string.more_equal_less_text)
+                txt.textSize = 15F
+                txt.setTextColor(Color.BLACK)
+                txt.gravity = Gravity.CENTER
+                txtbullet.text = getString(R.string.more_equals_less_bullet)
+                txtbullet.textSize = 15F
+                txtbullet.setTextColor(Color.BLACK)
+                txtbullet.gravity = Gravity.START
+            }
+            "More" -> {
+                Log.e("More", "Triggered")
+                txtTilte.setCompoundDrawablesWithIntrinsicBounds(R.drawable.angry_doctor_small, 0, 0, 0)
+                txtTilte.text = " "
+                txt.text = getString(R.string.more_day_text)
+                txt.textSize = 15F
+                txt.setTextColor(Color.BLACK)
+                txt.gravity = Gravity.CENTER
+                txtbullet.text = getString(R.string.more_day_bullet)
+                txtbullet.textSize = 15F
+                txtbullet.setTextColor(Color.BLACK)
+                txtbullet.gravity = Gravity.START
+            }
+            "FirstTimer" -> {
+                Log.e("More - First Time", "Triggered")
+                txtTilte.text = getString(R.string.more_first_time_title)
+                txt.text = getString(R.string.more_first_time_text)
+                txt.textSize = 15F
+                txt.setTextColor(Color.BLACK)
+                txt.gravity = Gravity.CENTER
+                txtbullet.text = getString(R.string.more_first_time_bullet)
+                txtbullet.textSize = 15F
+                txtbullet.setTextColor(Color.BLACK)
+                txtbullet.gravity = Gravity.START
+            }
         }
         return view
     }
 
-    private fun loadData(): Int {
+    private fun loadData(): String? {
         val sharedPreferences: SharedPreferences =
-            requireActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
-        val savedString = sharedPreferences.getInt("Number", -1)
+            requireActivity().getSharedPreferences("sharedPrefsData", Context.MODE_PRIVATE)
+        val savedString = sharedPreferences.getString("Number", null)
         return savedString
     }
 
