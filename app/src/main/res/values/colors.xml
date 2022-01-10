@@ -12,14 +12,22 @@
     <color name="LightBlueStatusBar">#00b3d4</color>
     <color name="Bone">#E3D5D5</color>
     <color name="Galazio">#1B98E0</color>
-    <color name="red">#FF0000</color>
+    <color name="red">#BA181B</color>
     <color name="Grullo">#006494</color>
     <color name="BlackCoral">#E8F1F2</color>
     <color name="DarkBlue">#13293D</color>
+    <color name="LightGrey">#D3D3D3</color>
+    <color name="ghost_white">#F0EFF4</color>
+    <color name="primary_blue">#29335C</color>
     <array name="array_dot_inactive">
         <item>@color/black</item>
         <item>@color/grey</item>
+        <item>@color/LightGrey</item>
         <item>@color/red</item>
+        <item>@color/ghost_white</item>
+        <item>@color/primary_blue</item>
+        <item>@color/DarkBlue</item>
+
     </array>
     <color name="light_blue_50">#FFE1F5FE</color>
     <color name="light_blue_200">#FF81D4FA</color>

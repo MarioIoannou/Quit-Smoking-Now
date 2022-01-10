@@ -35,23 +35,44 @@
     <string name="string_university_of_peloponnese">Welcome\nThis is a bachelor\'s thesis app,\n created for the University of Peloponnese</string>
     <string name="this_app_will_help_you_lower">This app will help you lower your cigarette consumption and even quit smoking, with the help of scientific papers from universities, researches and researchers papers.\n \nTo have better results both to yourself and in the app, you must lower your consumption by 50% and maintain it as long as you can.</string>
     <string name="about">About</string>
+    <string name="Bulk_or_Pack">Do you prefer industrial bulk tobacco or a pack of cigarettes?</string>
     <string name="How_many_smoke_per_day">How many cigarettes do you smoke per day?</string>
     <string name="How_much_pay_per_pack">How much do you pay per pack?</string>
     <string name="here_goes_how_much">Here goes how much</string>
     <string name="the_links_for_the_papers_are_below_for_you_to_see">The links for the papers, are below for you to see:</string>
     <string name="did_you_smoke_any_cigarettes_today">Did you smoke any cigarettes today?</string>
     <string name="did_you_accidentally_click_more_subtract_one">Did you accidentally click more? Subtract one.</string>
-    <string name="subtraction">Subtraction</string>
+    <string name="subtraction"> Subtraction </string>
     <string name="notification_channel_description">This is a channel description</string>
     <string name="cravings_text">This is a cravings timer.\n This timer will help you resist smoking for\n 4 minutes\n when you have cravings.</string>
 
     <string name="begin">Begin</string>
     <string name="reset">Reset</string>
 
+    <string-array name="bulk_or_pack">
+        <item>A pack of cigarettes</item>
+        <item>Industrial bulk tobacco</item>
+    </string-array>
+
     <string name="appwidget_text">EXAMPLE</string>
     <string name="configure">Configure</string>
     <string name="add_widget">Add widget</string>
     <string name="app_widget_description">This is an app widget description</string>
+
+    <string name="introduction_a" TextColor="@black">
+        \u25BA The concept of this app is when you smoke a cigarette, you press the cigarette button in the <b>Main</b> tab,
+        and a counter starts.
+    </string>
+    <string name="introduction_b" color="@black">
+        \u25BA Every day at <b>9pm</b>, there will be results at <b>Results</b> tab,
+        where you can see your progress depending on your daily consumption.
+    </string>
+    <string name="introduction_c" color="@black">
+        The <b>Menu</b> tab, contains:
+    </string>
+    <string name="introduction_d" color="@black">\u2022 A <b>Cravings</b> Timer </string>
+    <string name="introduction_e" color="@black">\u2022 A <b>Spending</b> calculator </string>
+    <string name="introduction_f" color="@black">\u2022 The <b>About</b> section, where you can see the links for the scientific papers about the risks in your health, depending your cigarette consumption.</string>
 
     <string name="introduction_1">This is the <b>Spending</b> tab. Here you can calculate how much you spend per day, week and month.</string>
     <string name="introduction_2">This is the <b>Cravings</b> tab. if you feel the need to smoke a cigarette, please don\'t, use apps craving tab.</string>
@@ -62,24 +83,24 @@
     <string name="first_time_result_text">Here you can see your results, depending on your daily cigarette consumption.\n\nPlease wait, be patient and the app will notify you about the results.</string>
 
     <string name="How_much_pay_per_pack_disclaimer">Please use full stop \".\", instead of comma \",\" . </string>
-    
-   <!--//More-DAY-->
+
+    <!--//More-DAY-->
     <string name="more_day_text">Your today\’s consumption is higher than yesterdays. You have to make the decision, to stop smoking.
         Please, consult the papers from <b>About</b> tab about daily consumption and the effects on health and if you have cravings use the timer from <b>Cravings</b> tab.
         From here on out, try lowering your cigarette consumption. In-depth time, increasing consumption, depending on your health condition you will have:</string>
-    <string name="more_day_bullet">&#8226; 1.04–1.11 times having cancer in general from a non-smoker<br/>\n&#8226; 8.08–12.17 times having bronchus and lung cancer<br/>\n&#8226; 3.16–8.44 times having larynx cancer <br/>\n&#8226; 1.85–4.32 times having liver cancer <br/>
-    \n&#8226; 1.71–2.63 times having lip, oral cavity and pharynx cancer <br/>\n&#8226; 1.57–2.46 times having esophagus cancer <br/>\n&#8226; 1.34–2.49 times having pancreas  cancer <br/>\n&#8226; Higher chances for ischemic heart diseases <br/></string>
+    <string name="more_day_bullet">&#8226; 1.04–1.11 times having cancer in general from a non-smoker<br />\n&#8226; 8.08–12.17 times having bronchus and lung cancer<br />\n&#8226; 3.16–8.44 times having larynx cancer <br />\n&#8226; 1.85–4.32 times having liver cancer <br />
+    \n&#8226; 1.71–2.63 times having lip, oral cavity and pharynx cancer <br />\n&#8226; 1.57–2.46 times having esophagus cancer <br />\n&#8226; 1.34–2.49 times having pancreas  cancer <br />\n&#8226; Higher chances for ischemic heart diseases <br /></string>
 
-        <!--//More-WEEK-->
+    <!--//More-WEEK-->
     <string name="more_week">Description</string>
 
     <!--//Less-DAY-->
     <string name="less_day_title"><b>CONGRATULATIONS</b></string>
-    <string name="less_day_text" >Your today\'s consumption is less than yesterdays. This is a small step towards the goal. Please, try your best to reduce the amount of cigarettes you smoke or stop smoking. Also, ask your doctor for advice before doing everything, you can use treatments such as:</string>
-    <string name="less_day_bullet">&#8226; Skin patches which release nicotine slowly<br/>\n&#8226; Chewing gum<br/>\n&#8226; Inhalators, which look like plastic cigarettes<br/>\n
-        &#8226; Tablets<br/>\n&#8226; Mouth spray<br/></string>
+    <string name="less_day_text">Your today\'s consumption is less than yesterdays. This is a small step towards the goal. Please, try your best to reduce the amount of cigarettes you smoke or stop smoking. Also, ask your doctor for advice before doing everything, you can use treatments such as:</string>
+    <string name="less_day_bullet">&#8226; Skin patches which release nicotine slowly<br />\n&#8226; Chewing gum<br />\n&#8226; Inhalators, which look like plastic cigarettes<br />\n
+        &#8226; Tablets<br />\n&#8226; Mouth spray<br /></string>
 
-        <!--//Less-WEEK-->
+    <!--//Less-WEEK-->
     <string name="less_week">Description</string>
 
     <!--//more = LESS (EQUAL)-->
@@ -87,15 +108,24 @@
     <string name="more_equal_less_text">Your today\'s consumption is the same with yesterdays.\n Your effort is not achievable enough to match with your goals. Smoking the same amount won\'t help you, so try harder.</string>
     <string name="more_equals_less_bullet"> </string>
 
+    <!--//more = LESS (EQUAL)-->
+    <string name="equals_none_title"><b>Another Day\nNo Consumption</b></string>
+    <string name="equals_none_text">Congratulations. Another day you didn\'t smoke any cigarettes today. If you maintain it:</string>
+    <string name="equals_none_bullet">
+        &#8226; After <b>1 day</b>, the risk of heart attack begins to decrease.\n\n&#8226; After <b>2 days</b>, you will notice a heightened sense of smell and more vivid tastes as these nerves heal.
+        \n\n&#8226; After <b>3 days</b>, the nicotine levels in your body, are depleted. You might experience headaches and cravings.\n\n&#8226; After <b>several months</b>, your lungs heal, the lung capacity improves and also your athletic endurance increases.
+        \n\n&#8226; And after <b>1 year</b> quitting smoking, your risk for coronary heart disease decreases by half. This risk will continue to drop past the 1 year mark.
+    </string>
+
     <!--//NO_CONSUMPTION-->
     <string name="no_consumption_title"><b>CONGRATULATIONS!</b></string>
-    <string name="no_consumption_text" >Congratulations. You didn\'t smoke any cigarettes today. This is a major step for you and your health. Maintain it and you won\'t have to smoke ever again.\n If you won\'t smoke for long enough:</string>
-    <string name="no_consumption_bullet">&#8226; After 20 minutes quitting smoking your blood pressure will drop to normal levels decreasing heart risks<br/>\n&#8226; You will notice that the food tastes better<br/>\n&#8226; Your breath, hair and clothes will smell better<br/>
-    \n&#8226; You will break an addiction cycle<br/>\n&#8226; You will improve your night vision and help preserve your overall vision by stopping the damage that smoking does to your eyes<br/>\n&#8226; Not smoking will keep your mouth healthy for years to come<br/>\n&#8226; You will prevent any type of cancer<br/></string>
+    <string name="no_consumption_text">Congratulations. You didn\'t smoke any cigarettes today. This is a major step for you and your health. Maintain it and you won\'t have to smoke ever again.\n If you won\'t smoke for long enough:</string>
+    <string name="no_consumption_bullet">&#8226; After 20 minutes quitting smoking your blood pressure will drop to normal levels decreasing heart risks<br />\n&#8226; You will notice that the food tastes better<br />\n&#8226; Your breath, hair and clothes will smell better<br />
+    \n&#8226; You will break an addiction cycle<br />\n&#8226; You will improve your night vision and help preserve your overall vision by stopping the damage that smoking does to your eyes<br />\n&#8226; Not smoking will keep your mouth healthy for years to come<br />\n&#8226; You will prevent any type of cancer<br /></string>
 
     <!--//FIRST_TIME-->
     <string name="more_first_time_title"><b>First Time</b></string>
-    <string name="more_first_time_text" >This is your first time receiving results, you should better start fresh tomorrow.</string>
+    <string name="more_first_time_text">This is your first time receiving results, you should better start fresh tomorrow.</string>
     <string name="more_first_time_bullet"> </string>
 </resources>
 

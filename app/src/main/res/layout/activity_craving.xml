@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/CravingsFrag"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerHorizontal="true"
+    android:background="@color/BlackCoral"
+    android:clickable="true"
+    android:fitsSystemWindows="true"
+    android:focusable="true"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".fragments.MainFragment">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/main_CardView_marginStart"
+        android:layout_marginTop="@dimen/main_CardView_marginTop"
+        android:layout_marginEnd="@dimen/main_CardView_marginEnd"
+        android:layout_marginBottom="@dimen/main_CardView_marginBottom"
+        android:elevation="@dimen/main_CardView_elevation"
+        app:cardCornerRadius="30dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/CravingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/main_CardView_textview_marginStart"
+                android:layout_marginTop="@dimen/main_CardView_textview_marginTop"
+                android:layout_marginEnd="@dimen/main_CardView_textview_marginEnd"
+                android:layout_marginBottom="@dimen/main_CardView_textview_marginBottom"
+                android:gravity="center"
+                android:text="@string/cravings_text"
+                android:textColor="@color/black"
+                android:textColorHighlight="#FFFFFF"
+                android:textColorHint="#000000"
+                android:textColorLink="#000000"
+                android:textAlignment="center"
+                android:textSize="@dimen/Cravings_textSize"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/play_craving"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/main_top_button_marginStart"
+            android:layout_marginTop="@dimen/main_top_button_marginTop"
+            android:layout_marginEnd="@dimen/main_top_button_marginEnd"
+            android:layout_marginBottom="@dimen/main_top_button_marginBottom"
+            android:background="@color/white"
+            android:drawableStart="@drawable/ic_baseline_play"
+            android:text="@string/begin"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/Cravings_btntextSize" />
+
+    </LinearLayout>
+
+</LinearLayout>

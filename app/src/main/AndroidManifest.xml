@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
 
     <application
         android:icon="@mipmap/launcher_logo"
@@ -14,18 +15,34 @@
         android:roundIcon="@mipmap/launcher_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuitSmokingNow">
+        <activity
+            android:name=".AboutActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".SpendingActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".CravingActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713" />
-        <!--ca-app-pub-2379578394910008/5141697841-->
-
-        <!--<service
+            android:value="ca-app-pub-3940256099942544~3347511713" /> <!-- ca-app-pub-2379578394910008/5141697841 -->
+        <!--
+<service
             android:name=".AlarmManager.AlarmService"
             android:enabled="true"
             android:exported="true"
-            tools:ignore="Instantiatable" />-->
-
+            tools:ignore="Instantiatable" />
+        -->
         <receiver
             android:name=".Services.AlertReceiver"
             android:enabled="true"
@@ -76,4 +93,5 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
+
 </manifest>

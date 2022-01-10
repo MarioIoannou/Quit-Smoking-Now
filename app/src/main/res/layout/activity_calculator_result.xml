@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="@color/BlackCoral"
+    android:gravity="center"
     tools:context=".fragments.MainFragment"
     android:fitsSystemWindows="true">
 
@@ -11,16 +14,29 @@
         android:id="@+id/toolbar_Calc"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:fitsSystemWindows="true" />
+        android:layout_marginTop="4dp"
+        android:fitsSystemWindows="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/CalcResultActivity_CardView_marginStart"
-        android:layout_marginTop="@dimen/CalcResultActivity_CardView_marginTop"
-        android:layout_marginEnd="@dimen/CalcResultActivity_CardView_marginEnd"
-        android:layout_marginBottom="@dimen/CalcResultActivity_CardView_marginBottom"
-        android:elevation="@dimen/main_CardView_elevation">
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="100dp"
+        android:elevation="@dimen/main_CardView_elevation"
+        app:cardCornerRadius="30dp"
+        app:cardUseCompatPadding="true"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_Calc"
+        app:layout_constraintVertical_bias="0.435">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -51,7 +67,7 @@
 
             <View
                 android:layout_width="wrap_content"
-                android:layout_height="3dp"
+                android:layout_height="2dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="13dp"
@@ -78,7 +94,7 @@
 
             <View
                 android:layout_width="wrap_content"
-                android:layout_height="3dp"
+                android:layout_height="2dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="13dp"
@@ -105,7 +121,7 @@
 
             <View
                 android:layout_width="wrap_content"
-                android:layout_height="3dp"
+                android:layout_height="2dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="13dp"
@@ -133,7 +149,7 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <ImageView
+    <!--<ImageView
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_gravity="center"
@@ -141,5 +157,5 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="80dp"
-        android:background="@drawable/moneyperson" />
-</LinearLayout>
+        android:background="@drawable/moneyperson" />-->
+</androidx.constraintlayout.widget.ConstraintLayout>

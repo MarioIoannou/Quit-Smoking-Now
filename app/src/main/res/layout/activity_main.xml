@@ -11,141 +11,153 @@
     android:layout_centerHorizontal="true"
     android:orientation="vertical"-->
 
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBar"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        app:tabBackground="@color/BlackCoral"
+        app:tabGravity="center"
+        app:tabIndicator="@drawable/indicator"
+        app:tabIndicatorAnimationMode="elastic"
+        app:tabIndicatorColor="@color/red"
+        app:tabIndicatorGravity="stretch"
+        app:tabInlineLabel="true"
+        app:tabMode="fixed"
+        app:tabTextAppearance="@style/CustomTabLayout"
+        app:tabTextColor="@color/black" />
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:tabBackground="@color/grey"
-            app:tabGravity="fill"
-            app:tabInlineLabel="true"
-            app:tabMode="fixed"
-            app:tabTextAppearance="@style/CustomTabLayout"
-            app:tabTextColor="@color/black" />
-    </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewpager"
+    <!-- <com.google.android.material.appbar.MaterialToolbar
+         android:id="@+id/toolbarmain"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content">
+
+
+
+         <include layout="@layout/contain_main" />
+     </com.google.android.material.appbar.MaterialToolbar>-->
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewpagermain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/appBar">
+        android:layout_below="@id/tabLayout">
 
-    </androidx.viewpager.widget.ViewPager>
+    </androidx.viewpager2.widget.ViewPager2>
 
-    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+    <!--<com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-3940256099942544/6300978111" />
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111" />-->
 
 </RelativeLayout>
 
-<!--<ImageButton
-android:id="@+id/settings_btn"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:layout_gravity="start"
-android:layout_marginStart="@dimen/main_top_button_marginStart"
-android:layout_marginEnd="@dimen/main_top_button_marginEnd"
-android:layout_marginTop="@dimen/main_top_button_marginTop"
-android:layout_marginBottom="@dimen/main_top_button_marginBottom"
-app:srcCompat="@drawable/ic_round_table_rows_24" />
+    <!--<ImageButton
+    android:id="@+id/settings_btn"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="start"
+    android:layout_marginStart="@dimen/main_top_button_marginStart"
+    android:layout_marginEnd="@dimen/main_top_button_marginEnd"
+    android:layout_marginTop="@dimen/main_top_button_marginTop"
+    android:layout_marginBottom="@dimen/main_top_button_marginBottom"
+    app:srcCompat="@drawable/ic_round_table_rows_24" />
 
-<androidx.cardview.widget.CardView
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:layout_centerHorizontal="true"
-android:layout_marginStart="@dimen/main_CardView_marginStart"
-android:layout_marginTop="@dimen/main_CardView_marginTop"
-android:layout_marginEnd="@dimen/main_CardView_marginEnd"
-android:layout_marginBottom="@dimen/main_CardView_marginBottom"
-android:elevation="@dimen/main_CardView_elevation">
-
-<LinearLayout
+    <androidx.cardview.widget.CardView
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center_horizontal">
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_marginStart="@dimen/main_CardView_marginStart"
+    android:layout_marginTop="@dimen/main_CardView_marginTop"
+    android:layout_marginEnd="@dimen/main_CardView_marginEnd"
+    android:layout_marginBottom="@dimen/main_CardView_marginBottom"
+    android:elevation="@dimen/main_CardView_elevation">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/DidYouSmokeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="@dimen/main_CardView_textview_marginStart"
+            android:layout_marginTop="@dimen/main_CardView_textview_marginTop"
+            android:layout_marginEnd="@dimen/main_CardView_textview_marginEnd"
+            android:layout_marginBottom="@dimen/main_CardView_textview_marginBottom"
+            android:gravity="center"
+            android:text="Did you smoke any cigarettes today?"
+            android:textColor="@color/black"
+            android:textColorHighlight="#FFFFFF"
+            android:textColorHint="#000000"
+            android:textColorLink="#000000"
+            android:textSize="@dimen/main_CardView_textview_font_size"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <ImageButton
+    android:id="@+id/CigaretteButton"
+    android:layout_width="@dimen/main_cigarette_width"
+    android:layout_height="@dimen/main_cigarette_height"
+    android:layout_marginStart="@dimen/main_cigarette_marginStart"
+    android:layout_marginTop="@dimen/main_cigarette_marginTop"
+    android:layout_marginEnd="@dimen/main_cigarette_marginEnd"
+    android:layout_marginBottom="@dimen/main_cigarette_marginBottom"
+    android:background="@drawable/cigarette"
+    android:scaleType="fitCenter" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:layout_marginTop="@dimen/subtraction_marginTop"
+    android:layout_marginBottom="@dimen/subtraction_marginBottom"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/DidYouSmokeText"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="@dimen/main_CardView_textview_marginStart"
-        android:layout_marginTop="@dimen/main_CardView_textview_marginTop"
-        android:layout_marginEnd="@dimen/main_CardView_textview_marginEnd"
-        android:layout_marginBottom="@dimen/main_CardView_textview_marginBottom"
         android:gravity="center"
-        android:text="Did you smoke any cigarettes today?"
+        android:text="Did you accidentally click more? Subtract one."
         android:textColor="@color/black"
         android:textColorHighlight="#FFFFFF"
         android:textColorHint="#000000"
         android:textColorLink="#000000"
-        android:textSize="@dimen/main_CardView_textview_font_size"
-        android:textStyle="bold" />
+        android:textSize="17dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.235" />
 
-</LinearLayout>
-</androidx.cardview.widget.CardView>
-
-<ImageButton
-android:id="@+id/CigaretteButton"
-android:layout_width="@dimen/main_cigarette_width"
-android:layout_height="@dimen/main_cigarette_height"
-android:layout_marginStart="@dimen/main_cigarette_marginStart"
-android:layout_marginTop="@dimen/main_cigarette_marginTop"
-android:layout_marginEnd="@dimen/main_cigarette_marginEnd"
-android:layout_marginBottom="@dimen/main_cigarette_marginBottom"
-android:background="@drawable/cigarette"
-android:scaleType="fitCenter" />
-
-<androidx.constraintlayout.widget.ConstraintLayout
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:layout_gravity="center_vertical"
-android:layout_marginTop="@dimen/subtraction_marginTop"
-android:layout_marginBottom="@dimen/subtraction_marginBottom"
-android:gravity="center_vertical"
-android:orientation="vertical">
-
-<TextView
-    android:id="@+id/textView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-    android:text="Did you accidentally click more? Subtract one."
-    android:textColor="@color/black"
-    android:textColorHighlight="#FFFFFF"
-    android:textColorHint="#000000"
-    android:textColorLink="#000000"
-    android:textSize="17dp"
-    android:textStyle="bold"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.235" />
-
-<Button
-    android:id="@+id/subtractCig"
-    android:layout_width="wrap_content"
-    android:layout_height="40dp"
-    android:backgroundTint="@color/red"
-    android:gravity="center"
-    android:text="Subtraction"
-    android:textColor="@color/white"
-    android:textSize="15dp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/textView" />
-</androidx.constraintlayout.widget.ConstraintLayout>-->
+    <Button
+        android:id="@+id/subtractCig"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:backgroundTint="@color/red"
+        android:gravity="center"
+        android:text="Subtraction"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 

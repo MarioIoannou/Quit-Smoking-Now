@@ -6,10 +6,16 @@
     android:theme="@style/AppTheme.NoActionBar"
     tools:context=".IntroActivity">
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/view_pager"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vpIntroAct"
         android:layout_width="match_parent"
+        android:layout_centerInParent="true"
         android:layout_height="match_parent" />
+
+    <!--<com.google.android.material.tabs.TabLayout
+        android:id="@+id/tl_Intro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <LinearLayout
         android:id="@+id/layoutDots"
@@ -28,7 +34,7 @@
         android:background="@android:color/black" />
 
     <Button
-        android:id="@+id/btn_next"
+        android:id="@+id/btn_next_Intro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -39,7 +45,7 @@
         android:textStyle="bold"
         tools:ignore="RelativeOverlap" />
 
-    <!--<Button
+    <Button
         android:id="@+id/btn_skip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

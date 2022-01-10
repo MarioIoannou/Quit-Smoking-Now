@@ -108,30 +108,36 @@ class ComparisonService : Service() {
         GlobalScope.launch {
             todayCigarettes = dbInstance.cigaretteDao().getTodayCigarettes()
             yesterdayCigarettes = dbInstance.cigaretteDao().getYesterdayCigarettes()
-            when {
-                todayCigarettes > yesterdayCigarettes -> {
-                    if (day > 1) {
-                        saveData("Number", "More", applicationContext)
-                    } else {
-                        saveData("Number", "FirstTimer", applicationContext)
-                        day = 2
-                        saveDataDay("Day", day, applicationContext)
-                    }
-                }
-                todayCigarettes < yesterdayCigarettes -> {
-                    saveData("Number", "Less", applicationContext)
-                }
-                todayCigarettes == yesterdayCigarettes -> {
-                    saveData("Number", "Equal", applicationContext)
-                }
-                todayCigarettes == 0 -> {
+            if( todayCigarettes < yesterdayCigarettes){
+                if (todayCigarettes == 0){
                     saveData("Number", "None", applicationContext)
+                    saveSmokeData("Tsigaro", 1, applicationContext)
+                }else{
+                    saveData("Number", "Less", applicationContext)
+                    saveSmokeData("Tsigaro", 1, applicationContext)
+                }
+            }
+            if( todayCigarettes == yesterdayCigarettes){
+                if (todayCigarettes == 0){
+                    saveData("Number", "EqualNone", applicationContext)
+                    saveSmokeData("Tsigaro", 1, applicationContext)
+                }else{
+                    saveData("Number", "Equal", applicationContext)
+                    saveSmokeData("Tsigaro", 1, applicationContext)
+                }
+            }
+            if( todayCigarettes > yesterdayCigarettes ){
+                if (day > 1) {
+                    saveData("Number", "More", applicationContext)
+                    saveSmokeData("Tsigaro", 1, applicationContext)
+                } else {
+                    saveData("Number", "FirstTimer", applicationContext)
+                    day = 2
+                    saveDataDay("Day", day, applicationContext)
+                    saveSmokeData("Tsigaro", 1, applicationContext)
                 }
             }
         }
-
-
-    saveSmokeData("Tsigaro", 1, applicationContext)
     val icon = BitmapFactory.decodeResource(resources, R.drawable.launcher_logo_2)
     val icon2 = BitmapFactory.decodeResource(resources, R.drawable.quitsmokingnowtext)
     val intentNot = Intent(this, MainActivity::class.java)

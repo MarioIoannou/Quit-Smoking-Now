@@ -8,6 +8,8 @@ import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.TEXT_ALIGNMENT_CENTER
+import android.view.View.TEXT_ALIGNMENT_VIEW_START
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
@@ -23,7 +25,7 @@ class ResultFragment : Fragment() {
         val txt: TextView = view.findViewById(R.id.ResultText)
         val txtbullet: TextView = view.findViewById(R.id.ResultBullet)
         Num = loadData().toString()
-        //Num = ""
+        //Num = "EqualNone"
         when (Num) {
             "None" -> {
                 Log.e("No consumption", "Triggered")
@@ -57,6 +59,19 @@ class ResultFragment : Fragment() {
                 txt.setTextColor(Color.BLACK)
                 txt.gravity = Gravity.CENTER
                 txtbullet.text = getString(R.string.more_equals_less_bullet)
+                txtbullet.textSize = 15F
+                txtbullet.setTextColor(Color.BLACK)
+                txtbullet.gravity = Gravity.START
+            }
+            "EqualNone" -> {
+                Log.e("EqualNone", "Triggered")
+                txtTilte.text = getString(R.string.equals_none_title)
+                txtTilte.textAlignment = TEXT_ALIGNMENT_CENTER
+                txt.text = getString(R.string.equals_none_text)
+                txt.textSize = 15F
+                txt.setTextColor(Color.BLACK)
+                txt.gravity = Gravity.CENTER
+                txtbullet.text = getString(R.string.equals_none_bullet)
                 txtbullet.textSize = 15F
                 txtbullet.setTextColor(Color.BLACK)
                 txtbullet.gravity = Gravity.START

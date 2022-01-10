@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/BlackCoral">
+
+    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/SpendingFrag"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:clickable="true"
+        android:fitsSystemWindows="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context=".fragments.MainFragment">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/Spending_Head_textview_marginStart"
+            android:layout_marginTop="@dimen/Spending_Head_textview_marginTop"
+            android:layout_marginEnd="@dimen/Spending_Head_textview_marginEnd"
+            android:layout_marginBottom="@dimen/Spending_Head_textview_marginBottom"
+            android:gravity="center"
+            android:text="@string/Spending_head_textview"
+            android:textColor="@color/black"
+            android:textColorHighlight="#FFFFFF"
+            android:textColorHint="#000000"
+            android:textColorLink="#000000"
+            android:textSize="@dimen/Spending_Head_textview_font_size"
+            android:textStyle="bold" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="30dp"
+            android:layout_marginStart="@dimen/Spending_CardView_textview_marginStart"
+            android:layout_marginTop="@dimen/Spending_CardView_textview_marginTop"
+            android:layout_marginEnd="@dimen/Spending_CardView_textview_marginEnd"
+            android:layout_marginBottom="@dimen/Spending_CardView_textview_marginBottom"
+            android:elevation="@dimen/main_CardView_elevation">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/main_CardView_textview_marginStart"
+                android:layout_marginTop="@dimen/main_CardView_textview_marginTop"
+                android:layout_marginEnd="@dimen/main_CardView_textview_marginEnd"
+                android:layout_marginBottom="@dimen/main_CardView_textview_marginBottom"
+                android:gravity="center"
+                android:text="@string/Bulk_or_Pack"
+                android:textColor="@color/black"
+                android:textColorHighlight="#FFFFFF"
+                android:textColorHint="#000000"
+                android:textColorLink="#000000"
+                android:textSize="@dimen/Spending_CardView_textview_font_size"
+                android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
+
+        <RadioGroup
+            android:id="@+id/rg_pref"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/main_CardView_textview_marginStart"
+            android:layout_marginTop="@dimen/main_CardView_textview_marginTop"
+            android:layout_marginEnd="@dimen/main_CardView_textview_marginEnd"
+            android:layout_marginBottom="@dimen/main_CardView_textview_marginBottom">
+
+            <RadioButton
+                android:id="@+id/rb_pack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:textSize="23sp"
+                android:buttonTint="@color/red"
+                android:text="A pack of cigarettes"/>
+
+
+            <RadioButton
+                android:id="@+id/rb_bulk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:textSize="23sp"
+                android:buttonTint="@color/red"
+                android:text="Industrial bulk tobacco"/>
+        </RadioGroup>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="30dp"
+            android:layout_marginStart="@dimen/Spending_CardView_textview_marginStart"
+            android:layout_marginTop="@dimen/Spending_CardView_textview_marginTop"
+            android:layout_marginEnd="@dimen/Spending_CardView_textview_marginEnd"
+            android:layout_marginBottom="@dimen/Spending_CardView_textview_marginBottom"
+            android:elevation="@dimen/main_CardView_elevation">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/main_CardView_textview_marginStart"
+                android:layout_marginTop="@dimen/main_CardView_textview_marginTop"
+                android:layout_marginEnd="@dimen/main_CardView_textview_marginEnd"
+                android:layout_marginBottom="@dimen/main_CardView_textview_marginBottom"
+                android:gravity="center"
+                android:text="@string/How_many_smoke_per_day"
+                android:textColor="@color/black"
+                android:textColorHighlight="#FFFFFF"
+                android:textColorHint="#000000"
+                android:textColorLink="#000000"
+                android:textSize="@dimen/Spending_CardView_textview_font_size"
+                android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
+
+        <EditText
+            android:id="@+id/HowManyPerDay"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/Spending_EditText_marginStart"
+            android:layout_marginTop="@dimen/Spending_EditText_marginTop"
+            android:layout_marginEnd="@dimen/Spending_EditText_marginEnd"
+            android:layout_marginBottom="@dimen/Spending_EditText_marginBottom"
+            android:backgroundTint="@color/black"
+            android:defaultFocusHighlightEnabled="false"
+            android:ems="10"
+            android:inputType="number"
+            android:maxLength="2"
+            android:textAlignment="center"
+            android:textColorHighlight="#009688"
+            android:textColorLink="@color/red"
+            android:textCursorDrawable="@color/black"
+            android:textSize="30dp" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="30dp"
+            android:layout_marginStart="@dimen/Spending_CardView_textview_marginStart"
+            android:layout_marginTop="@dimen/Spending_CardView_textview_marginTop"
+            android:layout_marginEnd="@dimen/Spending_CardView_textview_marginEnd"
+            android:layout_marginBottom="@dimen/Spending_CardView_textview_marginBottom"
+            android:elevation="@dimen/main_CardView_elevation">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/main_CardView_textview_marginStart"
+                android:layout_marginTop="@dimen/main_CardView_textview_marginTop"
+                android:layout_marginEnd="@dimen/main_CardView_textview_marginEnd"
+                android:layout_marginBottom="@dimen/main_CardView_textview_marginBottom"
+                android:gravity="center"
+                android:text="@string/How_much_pay_per_pack"
+                android:textColor="@color/black"
+                android:textColorHighlight="#FFFFFF"
+                android:textColorHint="#000000"
+                android:textColorLink="#000000"
+                android:textSize="@dimen/Spending_CardView_textview_font_size"
+                android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
+
+        <EditText
+            android:id="@+id/HowMuchPerPack"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/Spending_EditText_marginStart"
+            android:layout_marginTop="@dimen/Spending_EditText_marginTop"
+            android:layout_marginEnd="@dimen/Spending_EditText_marginEnd"
+            android:layout_marginBottom="@dimen/Spending_EditText_marginBottom"
+            android:backgroundTint="@color/black"
+            android:defaultFocusHighlightEnabled="false"
+            android:ems="10"
+            android:inputType="numberDecimal|numberSigned"
+            android:maxLength="5"
+            android:textAlignment="center"
+            android:textColorHighlight="#009688"
+            android:textColorLink="@color/red"
+            android:textCursorDrawable="@color/black"
+            android:textSize="30dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/Spending_Head_textview_marginStart"
+            android:layout_marginBottom="@dimen/Spending_Head_textview_marginStart"
+            android:text="@string/How_much_pay_per_pack_disclaimer"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/btn_spending_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/shape_rounded_button"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:text="Submit"
+            android:textColor="@color/black"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</ScrollView>

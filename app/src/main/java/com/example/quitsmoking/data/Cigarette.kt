@@ -5,7 +5,7 @@ import androidx.room.TypeConverters
 import com.example.quitsmoking.data.Converters
 import java.util.*
 
-@Entity(tableName = "Cigarettes_table")
+@Entity(tableName = "Cigarette_table")
 data class Cigarette(
     @PrimaryKey
         val id: Int,

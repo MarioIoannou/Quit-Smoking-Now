@@ -15,31 +15,57 @@ class CalculatorResultActivity : AppCompatActivity() {
         if (supportActionBar != null) {
             supportActionBar?.hide()
         }
+        //intent.putExtra("Pref",smokepref.text.toString())
         setupActionBar()
+        val Pref = intent?.getStringExtra("Pref")
+        println("PerDay: $Pref")
         val PerDay = intent?.getStringExtra("Perday")
         println("PerDay: $PerDay")
         val PerPack = intent?.getStringExtra("Perpack")
         println("PerPack: $PerPack")
-        val resultDay: Float = ((PerDay!!.toFloat() * PerPack!!.toFloat()) / 20)
-        val resultWeek: Float = resultDay * 7
-        val resultMonth: Float = resultDay * 30
-        val resultYear: Float = resultDay * 365
-        println("The resultDay is $resultDay")
-        println("The resultWeek is $resultWeek")
-        println("The resultMonth is $resultMonth")
-        println("The resultYear is $resultYear")
-        CalcDay.text = "After 1 Day you will save $resultDay €"
-        CalcDay.textSize = 15F
-        CalcDay.setTextColor(Color.BLACK)
-        CalcWeek.text = "After 1 Week you will save $resultWeek €"
-        CalcWeek.textSize = 15F
-        CalcWeek.setTextColor(Color.BLACK)
-        CalcMonth.text = "After 1 Month you will save $resultMonth €"
-        CalcMonth.textSize = 15F
-        CalcMonth.setTextColor(Color.BLACK)
-        CalcYear.text = "After 1 Year you will save $resultYear €"
-        CalcYear.textSize = 15F
-        CalcYear.setTextColor(Color.BLACK)
+        if(Pref.toString() == "A pack of cigarettes"){
+            val resultDay: Float = ((PerDay!!.toFloat() * PerPack!!.toFloat()) / 20)
+            val resultWeek: Float = resultDay * 7
+            val resultMonth: Float = resultDay * 30
+            val resultYear: Float = resultDay * 365
+            println("The resultDay is $resultDay")
+            println("The resultWeek is $resultWeek")
+            println("The resultMonth is $resultMonth")
+            println("The resultYear is $resultYear")
+            CalcDay.text = "After 1 Day you will save $resultDay €"
+            CalcDay.textSize = 15F
+            CalcDay.setTextColor(Color.BLACK)
+            CalcWeek.text = "After 1 Week you will save $resultWeek €"
+            CalcWeek.textSize = 15F
+            CalcWeek.setTextColor(Color.BLACK)
+            CalcMonth.text = "After 1 Month you will save $resultMonth €"
+            CalcMonth.textSize = 15F
+            CalcMonth.setTextColor(Color.BLACK)
+            CalcYear.text = "After 1 Year you will save $resultYear €"
+            CalcYear.textSize = 15F
+            CalcYear.setTextColor(Color.BLACK)
+        }else{
+            val resultDay: Float = ((PerDay!!.toFloat() * PerPack!!.toFloat()) / 50)
+            val resultWeek: Float = resultDay * 7
+            val resultMonth: Float = resultDay * 30
+            val resultYear: Float = resultDay * 365
+            println("The resultDay is $resultDay")
+            println("The resultWeek is $resultWeek")
+            println("The resultMonth is $resultMonth")
+            println("The resultYear is $resultYear")
+            CalcDay.text = "After 1 Day you will save $resultDay €"
+            CalcDay.textSize = 15F
+            CalcDay.setTextColor(Color.BLACK)
+            CalcWeek.text = "After 1 Week you will save $resultWeek €"
+            CalcWeek.textSize = 15F
+            CalcWeek.setTextColor(Color.BLACK)
+            CalcMonth.text = "After 1 Month you will save $resultMonth €"
+            CalcMonth.textSize = 15F
+            CalcMonth.setTextColor(Color.BLACK)
+            CalcYear.text = "After 1 Year you will save $resultYear €"
+            CalcYear.textSize = 15F
+            CalcYear.setTextColor(Color.BLACK)
+        }
     }
 
     private fun setupActionBar(){

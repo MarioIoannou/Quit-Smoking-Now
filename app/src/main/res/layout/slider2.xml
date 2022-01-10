@@ -28,6 +28,7 @@
         android:elevation="10dp">
 
         <TextView
+            android:id="@+id/slider2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/intro_CardView_textview_marginStart"

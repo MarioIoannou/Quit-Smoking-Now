@@ -18,22 +18,22 @@
     <dimen name="intro_ImageView_marginEnd">20dp</dimen>
     <dimen name="intro_ImageView_marginTop">40dp</dimen>
     <dimen name="intro_ImageView_marginBottom">40dp</dimen>
-    <dimen name="intro_ImageView_width">200dp</dimen>
-    <dimen name="intro_ImageView_height">260dp</dimen>
+    <dimen name="intro_ImageView_width">280dp</dimen>
+    <dimen name="intro_ImageView_height">280dp</dimen>
 
     <dimen name="intro_ImageView2_marginStart">20dp</dimen>
     <dimen name="intro_ImageView2_marginEnd">20dp</dimen>
     <dimen name="intro_ImageView2_marginTop">60dp</dimen>
     <dimen name="intro_ImageView2_marginBottom">40dp</dimen>
-    <dimen name="intro_ImageView2_width">220dp</dimen>
-    <dimen name="intro_ImageView2_height">280dp</dimen>
+    <dimen name="intro_ImageView2_width">260dp</dimen>
+    <dimen name="intro_ImageView2_height">320dp</dimen>
 
     <dimen name="intro_CardView_marginStart">30dp</dimen>
     <dimen name="intro_CardView_marginEnd">30dp</dimen>
     <dimen name="intro_CardView_marginTop">20dp</dimen>
     <dimen name="intro_CardView_marginBottom">10dp</dimen>
 
-    <dimen name="intro_CardView_textview_font_size">20dp</dimen>
+    <dimen name="intro_CardView_textview_font_size">20sp</dimen>
     <dimen name="intro_CardView_textview_marginStart">10dp</dimen>
     <dimen name="intro_CardView_textview_marginEnd">10dp</dimen>
     <dimen name="intro_CardView_textview_marginTop">10dp</dimen>

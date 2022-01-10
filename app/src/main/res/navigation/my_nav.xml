@@ -3,24 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/listFragment">
-
+    app:startDestination="@id/viewAdapterFragment">
     <fragment
-        android:id="@+id/listFragment"
-        android:name="com.example.quitsmoking.ListFragment"
-        android:label="fragment_list"
-        tools:layout="@layout/fragment_list" >
+        android:id="@+id/viewAdapterFragment"
+        android:name="com.example.quitsmoking.fragments.adapters.ViewAdapterFragment"
+        android:label="fragment_view_adapter"
+        tools:layout="@layout/fragment_view_adapter" >
         <action
-            android:id="@+id/action_listFragment_to_addFragment"
-            app:destination="@id/addFragment" />
+            android:id="@+id/action_viewAdapterFragment_to_mainActivity"
+            app:destination="@id/mainActivity" />
     </fragment>
-    <fragment
-        android:id="@+id/addFragment"
-        android:name="com.example.quitsmoking.AddFragment"
-        android:label="fragment_add"
-        tools:layout="@layout/fragment_add" >
-        <action
-            android:id="@+id/action_addFragment_to_listFragment"
-            app:destination="@id/listFragment" />
-    </fragment>
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.quitsmoking.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
 </navigation>
